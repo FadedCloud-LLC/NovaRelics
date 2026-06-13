@@ -1,0 +1,46 @@
+package dev.aponder.novarelics.ability.impl;
+
+import dev.aponder.novarelics.NovaRelics;
+import dev.aponder.novarelics.ability.Ability;
+import dev.aponder.novarelics.ability.AbilityConfig;
+import dev.aponder.novarelics.ability.AbilityContext;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
+import org.bukkit.util.Vector;
+
+public class KnockbackAbility extends Ability {
+
+    public KnockbackAbility(NovaRelics plugin) {
+        super(plugin);
+    }
+
+    @Override
+    public boolean execute(AbilityConfig config, AbilityContext context) {
+        Player player = context.getPlayer();
+        double radius = config.getDouble("radius", 5.0);
+        double power = config.getDouble("power", 2.0);
+        double vertical = config.getDouble("vertical", 0.4);
+        boolean includePlayer = config.getBoolean("include-player", false);
+
+        for (Entity e : player.getWorld().getNearbyEntities(
+                player.getLocation(), radius, radius, radius,
+                e -> e instanceof LivingEntity && (includePlayer || !e.equals(player)))) {
+
+            Vector dir = e.getLocation().toVector()
+                    .subtract(player.getLocation().toVector())
+                    .normalize()
+                    .multiply(power)
+                    .setY(vertical);
+            e.setVelocity(dir);
+        }
+
+        return true;
+    }
+
+    @Override
+    public String getName() { return "Knockback"; }
+
+    @Override
+    public String getDescription() { return "Knocks back all nearby entities away from the player."; }
+}

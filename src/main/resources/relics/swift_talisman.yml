@@ -1,0 +1,36 @@
+# ============================================================
+#  NovaRelics — Swift Talisman
+# ============================================================
+id: swift_talisman
+display-name: "<gradient:#FFEE00:#FFFFFF>Swift Talisman</gradient>"
+material: RABBIT_FOOT
+rarity: common
+permission: ""
+
+lore:
+  - ""
+  - "<gray>Light as a feather, fast as wind."
+  - "<gray>Grants <yellow>Speed I</yellow> while held."
+  - ""
+  - "<yellow>» <gray>Passive — no activation needed."
+  - ""
+
+glow: false
+item-flags:
+  - HIDE_ATTRIBUTES
+
+aura:
+  enabled: false
+
+triggers:
+  EQUIP:
+    - type: POTION_EFFECT
+      effect: SPEED
+      duration: 600
+      amplifier: 0
+      ambient: true
+
+cooldown:
+  type: PER_PLAYER
+  duration: 0
+  shared-key: ""

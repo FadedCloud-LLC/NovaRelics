@@ -46,6 +46,26 @@ public class AbilityRegistry {
         register("COOLDOWN_REDUCTION",   new CooldownReductionAbility(plugin));
         register("AUTO_REPLANT",         new AutoReplantAbility(plugin));
         register("CUSTOM_RECIPE_UNLOCK", new CustomRecipeUnlockAbility(plugin));
+        register("EXPLOSION",            new ExplosionAbility(plugin));
+        register("FLIGHT",               new FlightAbility(plugin));
+        register("SET_ON_FIRE",          new SetOnFireAbility(plugin));
+        register("KNOCKBACK",            new KnockbackAbility(plugin));
+        register("BROADCAST",            new BroadcastAbility(plugin));
+        register("GIVE_ITEM",            new GiveItemAbility(plugin));
+        register("LOOK_TELEPORT",        new LookTeleportAbility(plugin));
+        register("INVINCIBILITY",        new InvincibilityAbility(plugin));
+        register("FIREWORK",             new FireworkAbility(plugin));
+        register("STEAL_HEALTH",         new StealHealthAbility(plugin));
+        register("PULL",                 new PullAbility(plugin));
+        register("LAUNCH",               new LaunchAbility(plugin));
+        register("CURE",                 new CureAbility(plugin));
+        register("SHOCKWAVE",            new ShockwaveAbility(plugin));
+        register("GLOW",                 new GlowAbility(plugin));
+        register("CONSUME_RELIC",        new ConsumeRelicAbility(plugin));
+        register("PHANTOM_STRIKE",       new PhantomStrikeAbility(plugin));
+        register("CHARGE",               new ChargeAbility(plugin));
+        register("WEB_TRAP",             new WebTrapAbility(plugin));
+        register("NEARBY_HEAL",          new NearbyHealAbility(plugin));
     }
 
     public void register(String type, Ability ability) {

@@ -1,0 +1,58 @@
+# ============================================================
+#  NovaRelics — Berserker's Blood
+# ============================================================
+id: berserker_blood
+display-name: "<gradient:#CC0000:#FF6600>Berserker's Blood</gradient>"
+material: BLAZE_POWDER
+rarity: rare
+permission: ""
+
+lore:
+  - ""
+  - "<gray>Each kill fuels your bloodlust."
+  - "<gray>Gain <red>Strength</red> with every mob slain."
+  - ""
+  - "<red>☠ <gray>Stacks up to 3 times."
+  - ""
+
+glow: true
+item-flags:
+  - HIDE_ATTRIBUTES
+
+aura:
+  enabled: true
+  type: PULSE_EFFECT
+  particle: FLAME
+  radius: 0.8
+  speed: 0.04
+  amount: 6
+  update-ticks: 8
+  only-when-held: false
+
+triggers:
+  KILL_MOB:
+    - type: POTION_EFFECT
+      effect: INCREASE_DAMAGE
+      duration: 200
+      amplifier: 0
+      ambient: false
+    - type: GAIN_HEALTH_ON_KILL
+      amount: 2.0
+      percent: false
+      max-health-cap: true
+    - type: PARTICLE
+      particle: CRIT
+      count: 12
+      offset-x: 0.3
+      offset-y: 0.5
+      offset-z: 0.3
+      speed: 0.2
+    - type: SOUND
+      sound: ENTITY_PLAYER_ATTACK_STRONG
+      volume: 0.8
+      pitch: 0.7
+
+cooldown:
+  type: PER_PLAYER
+  duration: 0
+  shared-key: ""

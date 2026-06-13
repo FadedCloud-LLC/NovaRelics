@@ -1,0 +1,59 @@
+# ============================================================
+#  NovaRelics — Storm Caller
+# ============================================================
+id: storm_caller
+display-name: "<gradient:#4488FF:#FFFFFF>Storm Caller</gradient>"
+material: NETHER_STAR
+rarity: legendary
+permission: ""
+
+lore:
+  - ""
+  - "<gray>Harness the fury of the storm."
+  - "<gray>Right-click to <aqua>call lightning</aqua> on"
+  - "<gray>all nearby enemies."
+  - ""
+  - "<aqua>⚡ <gray>Strikes all entities within 8 blocks."
+  - ""
+
+glow: true
+item-flags:
+  - HIDE_ATTRIBUTES
+
+aura:
+  enabled: true
+  type: LIGHTNING_EFFECT
+  particle: ENCHANT
+  radius: 1.2
+  speed: 0.07
+  amount: 14
+  update-ticks: 3
+  only-when-held: true
+
+triggers:
+  RIGHT_CLICK:
+    - type: LIGHTNING
+      target: SELF
+      radius: 8.0
+      damage: true
+    - type: SHOCKWAVE
+      radius: 8.0
+      damage: 3.0
+      knockback: true
+      knockback-power: 1.8
+    - type: SOUND
+      sound: ENTITY_LIGHTNING_BOLT_THUNDER
+      volume: 1.0
+      pitch: 0.8
+    - type: PARTICLE
+      particle: FLASH
+      count: 1
+      offset-x: 0.0
+      offset-y: 0.0
+      offset-z: 0.0
+      speed: 0.0
+
+cooldown:
+  type: PER_PLAYER
+  duration: 30
+  shared-key: ""

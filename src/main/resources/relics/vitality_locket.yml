@@ -1,0 +1,36 @@
+# ============================================================
+#  NovaRelics — Vitality Locket
+# ============================================================
+id: vitality_locket
+display-name: "<gradient:#FF4466:#FF88AA>Vitality Locket</gradient>"
+material: CLOCK
+rarity: uncommon
+permission: ""
+
+lore:
+  - ""
+  - "<gray>A charm blessed with life force."
+  - "<gray>Grants <red>Regeneration</red> while held."
+  - ""
+  - "<red>♥ <gray>Passive — no activation needed."
+  - ""
+
+glow: false
+item-flags:
+  - HIDE_ATTRIBUTES
+
+aura:
+  enabled: false
+
+triggers:
+  EQUIP:
+    - type: POTION_EFFECT
+      effect: REGENERATION
+      duration: 600
+      amplifier: 0
+      ambient: true
+
+cooldown:
+  type: PER_PLAYER
+  duration: 0
+  shared-key: ""

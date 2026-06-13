@@ -1,0 +1,63 @@
+# ============================================================
+#  NovaRelics — Shadow Shroud
+# ============================================================
+id: shadow_shroud
+display-name: "<gradient:#220033:#AA44FF>Shadow Shroud</gradient>"
+material: SPIDER_EYE
+rarity: rare
+permission: ""
+
+lore:
+  - ""
+  - "<gray>Slip into the darkness."
+  - "<gray>Shift + right-click to <light_purple>vanish</light_purple>"
+  - "<gray>and dash forward."
+  - ""
+  - "<dark_purple>👁 <gray>20 second cooldown."
+  - ""
+
+glow: false
+item-flags:
+  - HIDE_ATTRIBUTES
+
+aura:
+  enabled: true
+  type: SHADOW_EFFECT
+  particle: ENCHANT
+  radius: 0.7
+  speed: 0.03
+  amount: 5
+  update-ticks: 6
+  only-when-held: true
+
+triggers:
+  SHIFT_RIGHT_CLICK:
+    - type: POTION_EFFECT
+      effect: INVISIBILITY
+      duration: 100
+      amplifier: 0
+      ambient: true
+    - type: POTION_EFFECT
+      effect: SPEED
+      duration: 60
+      amplifier: 1
+      ambient: false
+    - type: CHARGE
+      power: 1.8
+      vertical: 0.15
+    - type: SOUND
+      sound: ENTITY_ENDERMAN_TELEPORT
+      volume: 0.6
+      pitch: 1.3
+    - type: PARTICLE
+      particle: PORTAL
+      count: 20
+      offset-x: 0.3
+      offset-y: 0.5
+      offset-z: 0.3
+      speed: 0.1
+
+cooldown:
+  type: PER_PLAYER
+  duration: 20
+  shared-key: ""

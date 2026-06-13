@@ -1,0 +1,65 @@
+# ============================================================
+#  NovaRelics — Phoenix Feather
+# ============================================================
+id: phoenix_feather
+display-name: "<gradient:#FF6600:#FFDD00>Phoenix Feather</gradient>"
+material: BLAZE_ROD
+rarity: epic
+permission: ""
+
+lore:
+  - ""
+  - "<gray>Born from the ashes, you shall"
+  - "<gray>never truly fall."
+  - ""
+  - "<gold>🔥 <gray>Prevents one death, then heals"
+  - "<gold>🔥 <gray>and launches you skyward."
+  - ""
+
+glow: true
+item-flags:
+  - HIDE_ATTRIBUTES
+
+aura:
+  enabled: true
+  type: FIRE_EFFECT
+  particle: FLAME
+  radius: 0.9
+  speed: 0.05
+  amount: 8
+  update-ticks: 4
+  only-when-held: false
+
+triggers:
+  PLAYER_DEATH:
+    - type: PREVENT_DEATH
+      message: "<gradient:#FF6600:#FFDD00>The Phoenix Feather saved your life!</gradient>"
+    - type: HEAL
+      amount: 100
+      percent: true
+    - type: LAUNCH
+      vertical: 1.8
+      horizontal: 0.0
+    - type: FIREWORK
+      color: "#FF6600"
+      fade-color: "#FFDD00"
+      effect: BALL_LARGE
+      power: 1
+      flicker: true
+      trail: true
+    - type: SOUND
+      sound: ENTITY_BLAZE_SHOOT
+      volume: 1.0
+      pitch: 0.6
+    - type: PARTICLE
+      particle: FLAME
+      count: 40
+      offset-x: 0.4
+      offset-y: 0.8
+      offset-z: 0.4
+      speed: 0.2
+
+cooldown:
+  type: PER_PLAYER
+  duration: 120
+  shared-key: ""

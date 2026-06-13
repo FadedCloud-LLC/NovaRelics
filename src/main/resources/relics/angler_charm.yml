@@ -1,0 +1,47 @@
+# ============================================================
+#  NovaRelics — Angler's Charm
+# ============================================================
+id: angler_charm
+display-name: "<gradient:#0055CC:#55DDFF>Angler's Charm</gradient>"
+material: RAW_COD
+rarity: common
+permission: ""
+
+lore:
+  - ""
+  - "<gray>The sea favors the patient."
+  - "<gray>Earn <gold>money</gold> and <green>XP</green> on every catch."
+  - ""
+  - "<aqua>🎣 <gray>Passive — triggers on fish."
+  - ""
+
+glow: false
+item-flags:
+  - HIDE_ATTRIBUTES
+
+aura:
+  enabled: false
+
+triggers:
+  FISH:
+    - type: GIVE_MONEY
+      amount: 25.0
+    - type: GIVE_XP
+      amount: 10
+      levels: false
+    - type: PARTICLE
+      particle: WATER_SPLASH
+      count: 10
+      offset-x: 0.3
+      offset-y: 0.2
+      offset-z: 0.3
+      speed: 0.1
+    - type: SOUND
+      sound: ENTITY_FISHING_BOBBER_SPLASH
+      volume: 0.8
+      pitch: 1.2
+
+cooldown:
+  type: PER_PLAYER
+  duration: 0
+  shared-key: ""

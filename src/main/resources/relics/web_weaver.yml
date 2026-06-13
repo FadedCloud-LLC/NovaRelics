@@ -1,0 +1,50 @@
+# ============================================================
+#  NovaRelics — Web Weaver
+# ============================================================
+id: web_weaver
+display-name: "<gradient:#AAAAAA:#FFFFFF>Web Weaver</gradient>"
+material: TRIPWIRE_HOOK
+rarity: uncommon
+permission: ""
+
+lore:
+  - ""
+  - "<gray>Spin a web of entrapment."
+  - "<gray>Shift + right-click to ensnare"
+  - "<gray>all nearby enemies in <white>cobwebs</white>."
+  - ""
+  - "<gray>🕸 <gray>Enemies are trapped for 3 seconds."
+  - ""
+
+glow: false
+item-flags:
+  - HIDE_ATTRIBUTES
+
+aura:
+  enabled: false
+
+triggers:
+  SHIFT_RIGHT_CLICK:
+    - type: WEB_TRAP
+      radius: 5.0
+      duration: 3
+    - type: PULL
+      radius: 5.0
+      power: 0.5
+      vertical: 0.1
+    - type: SOUND
+      sound: BLOCK_WEB_BREAK
+      volume: 1.0
+      pitch: 0.8
+    - type: PARTICLE
+      particle: ITEM_SLIME
+      count: 15
+      offset-x: 0.5
+      offset-y: 0.3
+      offset-z: 0.5
+      speed: 0.05
+
+cooldown:
+  type: PER_PLAYER
+  duration: 12
+  shared-key: ""

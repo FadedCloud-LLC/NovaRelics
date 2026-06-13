@@ -1,0 +1,59 @@
+# ============================================================
+#  NovaRelics — Void Dagger
+# ============================================================
+id: void_dagger
+display-name: "<gradient:#110022:#CC44FF>Void Dagger</gradient>"
+material: ENDER_EYE
+rarity: mythic
+permission: ""
+
+lore:
+  - ""
+  - "<gray>A blade forged in the void."
+  - "<gray>Shift + right-click to <dark_purple>blink</dark_purple>"
+  - "<gray>behind your target and strike."
+  - ""
+  - "<dark_purple>✦ <gray>Appears behind the looked-at entity."
+  - "<dark_purple>✦ <gray>Detonates a void explosion at origin."
+  - ""
+
+glow: true
+item-flags:
+  - HIDE_ATTRIBUTES
+
+aura:
+  enabled: true
+  type: VOID_EFFECT
+  particle: PORTAL
+  radius: 0.8
+  speed: 0.06
+  amount: 8
+  update-ticks: 3
+  only-when-held: true
+
+triggers:
+  SHIFT_RIGHT_CLICK:
+    - type: PHANTOM_STRIKE
+      distance: 25
+      offset: 1.8
+    - type: EXPLOSION
+      power: 1.5
+      fire: false
+      break-blocks: false
+      target: PLAYER
+    - type: SOUND
+      sound: ENTITY_ENDERMAN_TELEPORT
+      volume: 1.0
+      pitch: 0.5
+    - type: PARTICLE
+      particle: PORTAL
+      count: 30
+      offset-x: 0.3
+      offset-y: 0.5
+      offset-z: 0.3
+      speed: 0.15
+
+cooldown:
+  type: PER_PLAYER
+  duration: 10
+  shared-key: ""

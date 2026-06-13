@@ -1,0 +1,58 @@
+# ============================================================
+#  NovaRelics — Gravity Gem
+# ============================================================
+id: gravity_gem
+display-name: "<gradient:#884400:#DD88FF>Gravity Gem</gradient>"
+material: AMETHYST_SHARD
+rarity: epic
+permission: ""
+
+lore:
+  - ""
+  - "<gray>Bend gravity to your will."
+  - "<gray>Right-click to <light_purple>pull</light_purple> all nearby"
+  - "<gray>enemies and crush them."
+  - ""
+  - "<light_purple>◈ <gray>15 second cooldown."
+  - ""
+
+glow: true
+item-flags:
+  - HIDE_ATTRIBUTES
+
+aura:
+  enabled: true
+  type: CIRCLE_EFFECT
+  particle: ENCHANT
+  radius: 1.0
+  speed: 0.06
+  amount: 10
+  update-ticks: 4
+  only-when-held: true
+
+triggers:
+  RIGHT_CLICK:
+    - type: PULL
+      radius: 12.0
+      power: 2.5
+      vertical: 0.3
+    - type: SHOCKWAVE
+      radius: 4.0
+      damage: 5.0
+      knockback: false
+    - type: SOUND
+      sound: BLOCK_AMETHYST_CLUSTER_BREAK
+      volume: 1.0
+      pitch: 0.7
+    - type: PARTICLE
+      particle: ENCHANT
+      count: 50
+      offset-x: 0.5
+      offset-y: 0.5
+      offset-z: 0.5
+      speed: 0.3
+
+cooldown:
+  type: PER_PLAYER
+  duration: 15
+  shared-key: ""
