@@ -1,0 +1,80 @@
+# ============================================================
+#  NovaRelics - rarities.yml
+#  Define custom rarities or override defaults.
+# ============================================================
+
+rarities:
+  common:
+    display-name: "Common"
+    color: "<gradient:#888888:#BBBBBB>"
+    prefix: "<gradient:#888888:#BBBBBB>[Common]</gradient>"
+    glow: false
+    aura-enabled: false
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP
+    particles: []
+
+  uncommon:
+    display-name: "Uncommon"
+    color: "<gradient:#00AA00:#55FF55>"
+    prefix: "<gradient:#00AA00:#55FF55>[Uncommon]</gradient>"
+    glow: false
+    aura-enabled: false
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP
+    particles: []
+
+  rare:
+    display-name: "Rare"
+    color: "<gradient:#0088FF:#55FFFF>"
+    prefix: "<gradient:#0088FF:#55FFFF>[Rare]</gradient>"
+    glow: true
+    aura-enabled: false
+    sound: ENTITY_PLAYER_LEVELUP
+    particles: []
+
+  epic:
+    display-name: "Epic"
+    color: "<gradient:#AA00AA:#FF55FF>"
+    prefix: "<gradient:#AA00AA:#FF55FF>[Epic]</gradient>"
+    glow: true
+    aura-enabled: true
+    sound: ENTITY_PLAYER_LEVELUP
+    particles:
+      - type: ENCHANT
+        amount: 5
+
+  legendary:
+    display-name: "Legendary"
+    color: "<gradient:#FFAA00:#FFD700>"
+    prefix: "<gradient:#FFAA00:#FFD700>[Legendary]</gradient>"
+    glow: true
+    aura-enabled: true
+    sound: UI_TOAST_CHALLENGE_COMPLETE
+    particles:
+      - type: TOTEM
+        amount: 8
+
+  mythic:
+    display-name: "Mythic"
+    color: "<gradient:#FF0000:#FF8800>"
+    prefix: "<gradient:#FF0000:#FF8800>[Mythic]</gradient>"
+    glow: true
+    aura-enabled: true
+    sound: UI_TOAST_CHALLENGE_COMPLETE
+    particles:
+      - type: FLAME
+        amount: 10
+      - type: TOTEM
+        amount: 5
+
+  divine:
+    display-name: "Divine"
+    color: "<gradient:#FFFFFF:#FFFF00>"
+    prefix: "<gradient:#FFFFFF:#FFFF00>[Divine]</gradient>"
+    glow: true
+    aura-enabled: true
+    sound: UI_TOAST_CHALLENGE_COMPLETE
+    particles:
+      - type: END_ROD
+        amount: 12
+      - type: ENCHANT
+        amount: 12

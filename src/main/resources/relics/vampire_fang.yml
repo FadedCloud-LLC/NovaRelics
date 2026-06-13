@@ -1,0 +1,55 @@
+# ============================================================
+#  NovaRelics — Vampire Fang
+# ============================================================
+id: vampire_fang
+display-name: "<gradient:#8B0000:#FF2222>Vampire Fang</gradient>"
+material: GHAST_TEAR
+rarity: rare
+permission: ""
+
+lore:
+  - ""
+  - "<gray>Drain the life from your enemies."
+  - "<gray>Killing a mob <red>heals</red> you."
+  - ""
+  - "<dark_red>❤ <gray>Heals 2 hearts per kill."
+  - ""
+
+glow: true
+item-flags:
+  - HIDE_ATTRIBUTES
+
+aura:
+  enabled: true
+  type: PULSE_EFFECT
+  particle: DUST
+  color: "#FF0000"
+  size: 1.2
+  radius: 1.0
+  speed: 0.05
+  amount: 10
+  update-ticks: 6
+  only-when-held: false
+
+triggers:
+  KILL_MOB:
+    - type: GAIN_HEALTH_ON_KILL
+      amount: 4.0
+      percent: false
+      max-health-cap: true
+    - type: PARTICLE
+      particle: CRIT
+      count: 15
+      offset-x: 0.3
+      offset-y: 0.5
+      offset-z: 0.3
+      speed: 0.15
+    - type: SOUND
+      sound: ENTITY_PLAYER_HURT
+      volume: 0.5
+      pitch: 0.6
+
+cooldown:
+  type: PER_PLAYER
+  duration: 0
+  shared-key: ""

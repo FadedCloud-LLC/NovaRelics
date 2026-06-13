@@ -1,0 +1,60 @@
+# ============================================================
+#  NovaRelics — Ore Charm
+# ============================================================
+id: ore_charm
+display-name: "<gradient:#FFA500:#FFD700>Ore Charm</gradient>"
+material: RAW_IRON
+rarity: uncommon
+permission: ""
+
+lore:
+  - ""
+  - "<gray>Doubles ore drops while held."
+  - ""
+  - "<gold>⛏ <gray>Works on all ores."
+  - "<dark_gray>Passive — no activation needed."
+  - ""
+
+glow: false
+item-flags:
+  - HIDE_ATTRIBUTES
+
+aura:
+  enabled: true
+  type: GROUND_RING
+  particle: ELECTRIC_SPARK
+  radius: 0.6
+  speed: 0.04
+  amount: 6
+  update-ticks: 8
+  only-when-held: true
+
+triggers:
+  BREAK_BLOCK:
+    - type: DOUBLE_DROPS
+      blocks:
+        - COAL_ORE
+        - DEEPSLATE_COAL_ORE
+        - IRON_ORE
+        - DEEPSLATE_IRON_ORE
+        - COPPER_ORE
+        - DEEPSLATE_COPPER_ORE
+        - GOLD_ORE
+        - DEEPSLATE_GOLD_ORE
+        - REDSTONE_ORE
+        - DEEPSLATE_REDSTONE_ORE
+        - LAPIS_ORE
+        - DEEPSLATE_LAPIS_ORE
+        - DIAMOND_ORE
+        - DEEPSLATE_DIAMOND_ORE
+        - EMERALD_ORE
+        - DEEPSLATE_EMERALD_ORE
+        - NETHER_GOLD_ORE
+        - NETHER_QUARTZ_ORE
+        - ANCIENT_DEBRIS
+      requires-silk-touch: false
+
+cooldown:
+  type: PER_PLAYER
+  duration: 0
+  shared-key: ""

@@ -1,0 +1,76 @@
+name: NovaRelics
+version: '${project.version}'
+main: dev.aponder.novarelics.NovaRelics
+api-version: 1.18
+description: A complete custom relic and survival item framework.
+authors: [ APonder ]
+prefix: NovaRelics
+
+softdepend:
+  - Vault
+  - PlaceholderAPI
+  - LuckPerms
+  - ItemsAdder
+  - Oraxen
+  - Nexo
+  - HeadDatabase
+  - ProtocolLib
+  - MythicMobs
+  - ModelEngine
+
+commands:
+  novarelics:
+    description: Main NovaRelics command.
+    usage: /novarelics <subcommand>
+    aliases: [ nr, relics ]
+    permission: novarelics.use
+
+permissions:
+  novarelics.use:
+    description: Allows basic NovaRelics usage.
+    default: true
+
+  novarelics.admin:
+    description: Full admin access to NovaRelics.
+    default: op
+    children:
+      novarelics.reload: true
+      novarelics.give: true
+      novarelics.take: true
+      novarelics.editor: true
+      novarelics.create: true
+      novarelics.delete: true
+      novarelics.import: true
+      novarelics.export: true
+
+  novarelics.reload:
+    description: Allows reloading NovaRelics.
+    default: op
+
+  novarelics.give:
+    description: Allows giving relics to players.
+    default: op
+
+  novarelics.take:
+    description: Allows taking relics from players.
+    default: op
+
+  novarelics.editor:
+    description: Allows access to the relic editor GUI.
+    default: op
+
+  novarelics.create:
+    description: Allows creating new relics.
+    default: op
+
+  novarelics.delete:
+    description: Allows deleting relics.
+    default: op
+
+  novarelics.import:
+    description: Allows importing relic files.
+    default: op
+
+  novarelics.export:
+    description: Allows exporting relic files.
+    default: op

@@ -1,0 +1,57 @@
+# ============================================================
+#  NovaRelics - language/en.yml  (English)
+#  Supports MiniMessage formatting
+# ============================================================
+
+prefix: "<gradient:#AA55FF:#55FFFF><bold>NovaRelics</bold></gradient> <dark_gray>»</dark_gray>"
+
+no-permission: "<prefix> <red>You do not have permission to do that."
+player-only: "<prefix> <red>This command can only be run by a player."
+unknown-command: "<prefix> <red>Unknown subcommand. Use <yellow>/nr help</yellow> for help."
+unknown-player: "<prefix> <red>Player <yellow><player></yellow> was not found."
+unknown-relic: "<prefix> <red>Relic <yellow><relic></yellow> was not found."
+invalid-amount: "<prefix> <red>Invalid amount. Please provide a positive number."
+
+reload-success: "<prefix> <green>Configuration reloaded successfully."
+
+give-success: "<prefix> <green>Gave <yellow><amount>x <relic></yellow> to <white><player></white>."
+give-received: "<prefix> <green>You received <yellow><amount>x <relic></yellow>."
+take-success: "<prefix> <green>Removed <yellow><amount>x <relic></yellow> from <white><player></white>."
+take-not-found: "<prefix> <red><player> does not have <yellow><relic></yellow> in their inventory."
+
+cooldown-active: "<prefix> <red>This relic is on cooldown. <yellow><time>s</yellow> remaining."
+cooldown-global: "<prefix> <red>This relic has a global cooldown active. <yellow><time>s</yellow> remaining."
+
+relic-list-header: "<prefix> <gray>Available relics <yellow>(<count>)</yellow>:"
+relic-list-entry: "  <dark_gray>• <yellow><id></yellow> <gray>— <white><name>"
+relic-list-empty: "<prefix> <gray>No relics are currently loaded."
+
+relic-info-header: "<newline><prefix> <gray>Relic Info: <yellow><id>"
+relic-info-name: "  <dark_gray>Name: <white><name>"
+relic-info-rarity: "  <dark_gray>Rarity: <rarity_color><rarity>"
+relic-info-trigger: "  <dark_gray>Trigger: <white><trigger>"
+relic-info-ability: "  <dark_gray>Ability: <white><ability>"
+relic-info-cooldown: "  <dark_gray>Cooldown: <white><cooldown>s"
+relic-info-footer: ""
+
+editor-open: "<prefix> <green>Opening relic editor…"
+editor-created: "<prefix> <green>Relic <yellow><id></yellow> saved."
+editor-deleted: "<prefix> <red>Relic <yellow><id></yellow> deleted."
+editor-duplicated: "<prefix> <green>Relic <yellow><id></yellow> duplicated as <yellow><new_id></yellow>."
+
+export-success: "<prefix> <green>Relic <yellow><id></yellow> exported to <white><file></white>."
+import-success: "<prefix> <green>Relic <yellow><id></yellow> imported from <white><file></white>."
+import-failed: "<prefix> <red>Import failed: <white><error>"
+
+ability-full-repair-success: "<prefix> <green>Your <yellow><item></yellow> has been fully repaired!"
+ability-full-repair-no-money: "<prefix> <red>You need <yellow>$<cost></yellow> to use the Mending Wool."
+ability-full-repair-no-xp: "<prefix> <red>You need <yellow><levels></yellow> XP levels to use the Mending Wool."
+ability-teleport-success: "<prefix> <aqua>Teleported!"
+ability-heal-success: "<prefix> <red>❤ <green>Healed <yellow><amount></yellow> hearts."
+ability-feed-success: "<prefix> <gold>Hunger restored."
+ability-no-target: "<prefix> <red>No valid target found."
+ability-prevent-death: "<prefix> <red>Your relic saved your life!"
+ability-vein-mine: "<prefix> <gray>Vein mined <yellow><count></yellow> blocks."
+ability-tree-feller: "<prefix> <gray>Felled <yellow><count></yellow> logs."
+
+drop-announce: "<prefix> <yellow><player></yellow> found a <rarity_color><bold><relic></bold><yellow>!"

@@ -1,0 +1,57 @@
+# ============================================================
+#  NovaRelics - language/es.yml  (Español)
+#  Supports MiniMessage formatting
+# ============================================================
+
+prefix: "<gradient:#AA55FF:#55FFFF><bold>NovaRelics</bold></gradient> <dark_gray>»</dark_gray>"
+
+no-permission: "<prefix> <red>No tienes permiso para hacer eso."
+player-only: "<prefix> <red>Este comando solo puede ser ejecutado por un jugador."
+unknown-command: "<prefix> <red>Subcomando desconocido. Usa <yellow>/nr help</yellow> para ayuda."
+unknown-player: "<prefix> <red>El jugador <yellow><player></yellow> no fue encontrado."
+unknown-relic: "<prefix> <red>La reliquia <yellow><relic></yellow> no fue encontrada."
+invalid-amount: "<prefix> <red>Cantidad inválida. Por favor ingresa un número positivo."
+
+reload-success: "<prefix> <green>Configuración recargada exitosamente."
+
+give-success: "<prefix> <green>Le diste <yellow><amount>x <relic></yellow> a <white><player></white>."
+give-received: "<prefix> <green>Recibiste <yellow><amount>x <relic></yellow>."
+take-success: "<prefix> <green>Se eliminó <yellow><amount>x <relic></yellow> de <white><player></white>."
+take-not-found: "<prefix> <red><player> no tiene <yellow><relic></yellow> en su inventario."
+
+cooldown-active: "<prefix> <red>Esta reliquia está en enfriamiento. <yellow><time>s</yellow> restantes."
+cooldown-global: "<prefix> <red>Esta reliquia tiene un enfriamiento global activo. <yellow><time>s</yellow> restantes."
+
+relic-list-header: "<prefix> <gray>Reliquias disponibles <yellow>(<count>)</yellow>:"
+relic-list-entry: "  <dark_gray>• <yellow><id></yellow> <gray>— <white><name>"
+relic-list-empty: "<prefix> <gray>No hay reliquias cargadas actualmente."
+
+relic-info-header: "<newline><prefix> <gray>Info de Reliquia: <yellow><id>"
+relic-info-name: "  <dark_gray>Nombre: <white><name>"
+relic-info-rarity: "  <dark_gray>Rareza: <rarity_color><rarity>"
+relic-info-trigger: "  <dark_gray>Disparador: <white><trigger>"
+relic-info-ability: "  <dark_gray>Habilidad: <white><ability>"
+relic-info-cooldown: "  <dark_gray>Enfriamiento: <white><cooldown>s"
+relic-info-footer: ""
+
+editor-open: "<prefix> <green>Abriendo el editor de reliquias…"
+editor-created: "<prefix> <green>Reliquia <yellow><id></yellow> guardada."
+editor-deleted: "<prefix> <red>Reliquia <yellow><id></yellow> eliminada."
+editor-duplicated: "<prefix> <green>Reliquia <yellow><id></yellow> duplicada como <yellow><new_id></yellow>."
+
+export-success: "<prefix> <green>Reliquia <yellow><id></yellow> exportada a <white><file></white>."
+import-success: "<prefix> <green>Reliquia <yellow><id></yellow> importada desde <white><file></white>."
+import-failed: "<prefix> <red>La importación falló: <white><error>"
+
+ability-full-repair-success: "<prefix> <green>¡Tu <yellow><item></yellow> ha sido reparado completamente!"
+ability-full-repair-no-money: "<prefix> <red>Necesitas <yellow>$<cost></yellow> para usar la Lana de Reparación."
+ability-full-repair-no-xp: "<prefix> <red>Necesitas <yellow><levels></yellow> niveles de XP para usar la Lana de Reparación."
+ability-teleport-success: "<prefix> <aqua>¡Teletransportado!"
+ability-heal-success: "<prefix> <red>❤ <green>Curaste <yellow><amount></yellow> corazones."
+ability-feed-success: "<prefix> <gold>Hambre restaurada."
+ability-no-target: "<prefix> <red>No se encontró un objetivo válido."
+ability-prevent-death: "<prefix> <red>¡Tu reliquia te salvó la vida!"
+ability-vein-mine: "<prefix> <gray>Minaste en veta <yellow><count></yellow> bloques."
+ability-tree-feller: "<prefix> <gray>Talaste <yellow><count></yellow> troncos."
+
+drop-announce: "<prefix> <yellow><player></yellow> encontró <rarity_color><bold><relic></bold><yellow>!"

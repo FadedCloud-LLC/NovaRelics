@@ -1,0 +1,58 @@
+# ============================================================
+#  NovaRelics — Teleport Crystal
+# ============================================================
+id: teleport_crystal
+display-name: "<gradient:#55FFFF:#AA55FF>Teleport Crystal</gradient>"
+material: AMETHYST_SHARD
+rarity: rare
+permission: ""
+
+lore:
+  - ""
+  - "<gray>Right-click to teleport to a"
+  - "<gray>random location nearby."
+  - ""
+  - "<aqua>⚡ <gray>30 second cooldown."
+  - ""
+
+glow: true
+item-flags:
+  - HIDE_ATTRIBUTES
+  - HIDE_ENCHANTS
+
+custom-model-data: 0
+
+aura:
+  enabled: true
+  type: CIRCLE_EFFECT
+  particle: END_ROD
+  radius: 0.8
+  speed: 0.08
+  amount: 8
+  update-ticks: 3
+  only-when-held: true
+
+triggers:
+  RIGHT_CLICK:
+    - type: TELEPORT
+      mode: RANDOM
+      radius: 50
+      min-radius: 5
+      safe: true
+      world: ""
+    - type: SOUND
+      sound: ENTITY_ENDERMAN_TELEPORT
+      volume: 1.0
+      pitch: 1.0
+    - type: PARTICLE
+      particle: PORTAL
+      count: 30
+      offset-x: 0.3
+      offset-y: 0.5
+      offset-z: 0.3
+      speed: 0.1
+
+cooldown:
+  type: PER_PLAYER
+  duration: 30
+  shared-key: ""

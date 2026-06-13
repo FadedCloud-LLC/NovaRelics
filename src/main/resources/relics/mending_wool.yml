@@ -1,0 +1,42 @@
+# ============================================================
+#  NovaRelics — Mending Wool
+# ============================================================
+id: mending_wool
+display-name: "<gradient:#FFFFFF:#AADDFF>Mending Wool</gradient>"
+material: WHITE_WOOL
+rarity: uncommon
+permission: ""
+
+lore:
+  - ""
+  - "<gray>Place a damaged item in an anvil"
+  - "<gray>with this wool to <green>fully repair</green> it."
+  - ""
+  - "<dark_gray>⚡ <gray>Consumed on use."
+  - ""
+
+glow: false
+item-flags:
+  - HIDE_ATTRIBUTES
+
+aura:
+  enabled: true
+  type: SPIRAL_EFFECT
+  particle: ENCHANT
+  radius: 1.2
+  speed: 0.06
+  amount: 12
+  update-ticks: 5
+  only-when-held: true
+
+triggers:
+  ANVIL:
+    - type: FULL_REPAIR
+      xp-cost: 0
+      money-cost: 0.0
+      allowed-items: []   # empty = allow all damageable items
+
+cooldown:
+  type: PER_PLAYER
+  duration: 0
+  shared-key: ""

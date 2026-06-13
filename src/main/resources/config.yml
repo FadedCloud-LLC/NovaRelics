@@ -1,0 +1,52 @@
+# ============================================================
+#  NovaRelics - config.yml
+# ============================================================
+
+storage:
+  type: SQLITE        # SQLITE or MYSQL
+  mysql:
+    host: localhost
+    port: 3306
+    database: novarelics
+    username: root
+    password: password
+    pool-size: 10
+    connection-timeout: 30000
+    idle-timeout: 600000
+    max-lifetime: 1800000
+
+aura:
+  enabled: true
+  render-distance: 32           # Max distance (blocks) to show aura to other players
+  global-update-ticks: 4        # Default ticks between aura updates
+  max-particles-per-player: 80  # Safety cap per player per update
+  chunk-aware: true             # Skip aura rendering for unloaded chunks
+
+cooldown:
+  storage: MEMORY    # MEMORY or DATABASE
+  notify-on-cooldown: true
+  cooldown-bar: true
+
+drops:
+  enabled: true
+  announce-rare: true
+  announce-radius: 50
+
+recipes:
+  enabled: true
+
+performance:
+  async-data-loading: true
+  particle-distance-squared: 1024   # 32*32 — squared for performance
+  aura-disabled-worlds: []          # World names where auras are fully disabled
+  max-vein-mine-blocks: 64
+  max-tree-feller-blocks: 128
+
+gui:
+  editor-rows: 6
+  animation-enabled: true
+
+debug: false
+
+# Language file to use from the language/ folder (e.g. en, es, ru)
+language: en

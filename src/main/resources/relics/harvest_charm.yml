@@ -1,0 +1,41 @@
+# ============================================================
+#  NovaRelics — Harvest Charm
+# ============================================================
+id: harvest_charm
+display-name: "<gradient:#1A8C1A:#7CFC00>Harvest Charm</gradient>"
+material: WHEAT
+rarity: common
+permission: ""
+
+lore:
+  - ""
+  - "<gray>Automatically replants crops"
+  - "<gray>after harvesting them."
+  - ""
+  - "<green>🌾 <gray>Supports all vanilla crops."
+  - "<dark_gray>Passive — no activation needed."
+  - ""
+
+glow: false
+item-flags:
+  - HIDE_ATTRIBUTES
+
+aura:
+  enabled: false
+
+triggers:
+  BREAK_BLOCK:
+    - type: AUTO_REPLANT
+      crops:
+        - WHEAT
+        - CARROTS
+        - POTATOES
+        - BEETROOTS
+        - NETHER_WART
+      consume-seed: false
+      replant-delay-ticks: 1
+
+cooldown:
+  type: PER_PLAYER
+  duration: 0
+  shared-key: ""

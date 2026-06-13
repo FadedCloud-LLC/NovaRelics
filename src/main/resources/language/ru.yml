@@ -1,0 +1,57 @@
+# ============================================================
+#  NovaRelics - language/ru.yml  (Русский)
+#  Supports MiniMessage formatting
+# ============================================================
+
+prefix: "<gradient:#AA55FF:#55FFFF><bold>NovaRelics</bold></gradient> <dark_gray>»</dark_gray>"
+
+no-permission: "<prefix> <red>У вас нет разрешения на это действие."
+player-only: "<prefix> <red>Эта команда может быть выполнена только игроком."
+unknown-command: "<prefix> <red>Неизвестная подкоманда. Используйте <yellow>/nr help</yellow> для справки."
+unknown-player: "<prefix> <red>Игрок <yellow><player></yellow> не найден."
+unknown-relic: "<prefix> <red>Реликвия <yellow><relic></yellow> не найдена."
+invalid-amount: "<prefix> <red>Неверное количество. Введите положительное число."
+
+reload-success: "<prefix> <green>Конфигурация успешно перезагружена."
+
+give-success: "<prefix> <green>Выдано <yellow><amount>x <relic></yellow> игроку <white><player></white>."
+give-received: "<prefix> <green>Вы получили <yellow><amount>x <relic></yellow>."
+take-success: "<prefix> <green>Изъято <yellow><amount>x <relic></yellow> у <white><player></white>."
+take-not-found: "<prefix> <red>У <player> нет <yellow><relic></yellow> в инвентаре."
+
+cooldown-active: "<prefix> <red>Реликвия на перезарядке. Осталось <yellow><time>s</yellow>."
+cooldown-global: "<prefix> <red>Реликвия на глобальной перезарядке. Осталось <yellow><time>s</yellow>."
+
+relic-list-header: "<prefix> <gray>Доступные реликвии <yellow>(<count>)</yellow>:"
+relic-list-entry: "  <dark_gray>• <yellow><id></yellow> <gray>— <white><name>"
+relic-list-empty: "<prefix> <gray>Реликвии не загружены."
+
+relic-info-header: "<newline><prefix> <gray>Информация о реликвии: <yellow><id>"
+relic-info-name: "  <dark_gray>Название: <white><name>"
+relic-info-rarity: "  <dark_gray>Редкость: <rarity_color><rarity>"
+relic-info-trigger: "  <dark_gray>Триггер: <white><trigger>"
+relic-info-ability: "  <dark_gray>Способность: <white><ability>"
+relic-info-cooldown: "  <dark_gray>Перезарядка: <white><cooldown>s"
+relic-info-footer: ""
+
+editor-open: "<prefix> <green>Открытие редактора реликвий…"
+editor-created: "<prefix> <green>Реликвия <yellow><id></yellow> сохранена."
+editor-deleted: "<prefix> <red>Реликвия <yellow><id></yellow> удалена."
+editor-duplicated: "<prefix> <green>Реликвия <yellow><id></yellow> скопирована как <yellow><new_id></yellow>."
+
+export-success: "<prefix> <green>Реликвия <yellow><id></yellow> экспортирована в <white><file></white>."
+import-success: "<prefix> <green>Реликвия <yellow><id></yellow> импортирована из <white><file></white>."
+import-failed: "<prefix> <red>Ошибка импорта: <white><error>"
+
+ability-full-repair-success: "<prefix> <green>Ваш <yellow><item></yellow> полностью починен!"
+ability-full-repair-no-money: "<prefix> <red>Вам нужно <yellow>$<cost></yellow> для использования Wool of Mending."
+ability-full-repair-no-xp: "<prefix> <red>Вам нужно <yellow><levels></yellow> уровней XP для использования Wool of Mending."
+ability-teleport-success: "<prefix> <aqua>Телепортирован!"
+ability-heal-success: "<prefix> <red>❤ <green>Восстановлено <yellow><amount></yellow> сердец."
+ability-feed-success: "<prefix> <gold>Голод восстановлен."
+ability-no-target: "<prefix> <red>Подходящая цель не найдена."
+ability-prevent-death: "<prefix> <red>Реликвия спасла вам жизнь!"
+ability-vein-mine: "<prefix> <gray>Добыто вейном <yellow><count></yellow> блоков."
+ability-tree-feller: "<prefix> <gray>Срублено <yellow><count></yellow> брёвен."
+
+drop-announce: "<prefix> <yellow><player></yellow> нашёл <rarity_color><bold><relic></bold><yellow>!"
