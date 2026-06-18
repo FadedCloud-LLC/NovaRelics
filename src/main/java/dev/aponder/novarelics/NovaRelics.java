@@ -15,6 +15,8 @@ import dev.aponder.novarelics.storage.StorageManager;
 import dev.aponder.novarelics.texture.TextureManager;
 import dev.aponder.novarelics.trigger.TriggerManager;
 import dev.aponder.novarelics.util.MiniMsg;
+import org.bstats.bukkit.Metrics;
+import org.bstats.charts.SimplePie;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -109,6 +111,11 @@ public final class NovaRelics extends JavaPlugin {
 
         // 11. PAPI expansion
         hookManager.registerPlaceholders();
+
+        // 12. bStats metrics
+        Metrics metrics = new Metrics(this, 32075);
+        metrics.addCustomChart(new SimplePie("storage_type",
+                () -> storageManager.getProviderName()));
 
         long elapsed = System.currentTimeMillis() - start;
         console("<gradient:#AA55FF:#55FFFF><bold>NovaRelics</bold></gradient> <gray>v"

@@ -8,7 +8,7 @@ NovaRelics allows server owners to create fully custom relics, charms, artifacts
 
 ## Features
 
-- **30+ built-in abilities** — from healing to vein mining to teleportation
+- **50+ built-in abilities** — from healing to vein mining to teleportation
 - **28 trigger types** — right-click, anvil, mob kill, block break, movement, and more
 - **21 premium aura effects** — spiral, double spiral, pulse, fire, ice, void, celestial, and more
 - **7 configurable rarities** — Common through Divine, each with unique colors, sounds, and particles
@@ -18,12 +18,13 @@ NovaRelics allows server owners to create fully custom relics, charms, artifacts
 - **In-game GUI editor** — create and edit relics without touching files
 - **PlaceholderAPI expansion** — 5+ placeholders out of the box
 - **Performance-first aura system** — distance checks, chunk awareness, configurable intervals
+- **bStats metrics** — anonymous usage statistics via [bStats](https://bstats.org/plugin/bukkit/NovaRelics/32075)
 
 ---
 
 ## Installation
 
-1. Download `NovaRelics-1.0.0.jar`
+1. Download `NovaRelics-1.0.1.jar`
 2. Drop it into your `plugins/` folder
 3. Restart the server
 4. Edit relics in `plugins/NovaRelics/relics/`
@@ -94,15 +95,25 @@ Reload with `/nr reload` and give with `/nr give <player> my_relic`.
 
 ---
 
-## Flagship Relics
+## Bundled Relics (15)
 
-| Relic | Trigger | Effect |
-|-------|---------|--------|
-| Mending Wool | Anvil | Fully repairs any item |
-| Teleport Crystal | Right-click | Random teleport |
-| Vampire Fang | Kill mob | Heal on kill |
-| Ore Charm | Break block | Double ore drops |
-| Harvest Charm | Break block | Auto-replant crops |
+| Relic | Rarity | Trigger | Effect |
+|-------|--------|---------|--------|
+| Mending Wool | Uncommon | Anvil | Fully repairs any item |
+| Teleport Crystal | Rare | Right-click | Random teleport |
+| Vampire Fang | Rare | Kill mob | Heal on kill |
+| Ore Charm | Uncommon | Break block | Double ore drops |
+| Harvest Charm | Common | Break block | Auto-replant crops |
+| Storm Caller | Legendary | Right-click | AoE lightning + shockwave |
+| Phoenix Feather | Epic | Player death | Prevent death + heal + launch |
+| Berserker Blood | Rare | Kill mob | Strength + lifesteal |
+| Shadow Shroud | Rare | Shift+right-click | Invisibility + speed + charge |
+| Gravity Gem | Epic | Right-click | Pull nearby enemies + shockwave |
+| Vitality Locket | Uncommon | Equip | Passive Regeneration I |
+| Void Dagger | Mythic | Shift+right-click | Phantom strike + void explosion |
+| Web Weaver | Uncommon | Shift+right-click | Ensnare enemies in cobwebs |
+| Angler's Charm | Common | Fish | Money + XP on every catch |
+| Swift Talisman | Common | Equip | Passive Speed I |
 
 ---
 
