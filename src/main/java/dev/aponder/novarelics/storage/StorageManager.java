@@ -97,4 +97,8 @@ public class StorageManager {
     }
 
     public StorageProvider getProvider() { return provider; }
+
+    public String getProviderName() {
+        return provider instanceof MySQLProvider ? "MySQL" : "SQLite";
+    }
 }
