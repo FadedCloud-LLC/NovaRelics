@@ -18,6 +18,11 @@ NovaRelics is small, readable and well structured: a registry of 50 stateless ab
 - **Two silent data-quality failures.** Saving a relic from the editor or export erases its aura, enchantments and flags. Every hex/gradient colour is reduced to the 16 legacy colours (reproduced by execution).
 - **No tests or CI exist.** Coverage is 0 %.
 
+## Phase 1 update (2026-11-12): critical exploits and data loss fixed
+- **8 findings fixed:** NR-001 (duplication), NR-004 (protection bypass), NR-005 (free repairs), NR-007 (KEEP_ITEM; needs real-server confirmation), NR-008 (config loss), NR-010 (cooldown reset), NR-012 (path traversal), NR-036 (raw message keys).
+- **Tests:** 218. The gate is 170/170 on MockBukkit 1.21 and 26.3, with 48 regression tests left for open findings.
+- **28 findings remain open.** Highest priority next is Phase 2 compatibility: version gate, Spigot, renamed constants, skull textures.
+
 ## Phase 0 update (2026-11-12): test infrastructure delivered
 | | |
 |---|---|

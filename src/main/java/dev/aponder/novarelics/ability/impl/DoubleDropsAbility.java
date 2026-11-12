@@ -24,6 +24,9 @@ public class DoubleDropsAbility extends Ability {
     public boolean execute(AbilityConfig config, AbilityContext context) {
         BlockBreakEvent event = context.getEvent(BlockBreakEvent.class);
         if (event == null) return false;
+        // Respect other plugins disabling drops, and creative mode (no drops at all).
+        if (!event.isDropItems()) return false;
+        if (context.getPlayer().getGameMode() == org.bukkit.GameMode.CREATIVE) return false;
 
         Block block = event.getBlock();
         List<String> allowedBlocks = (List<String>) config.getParams().get("blocks");
@@ -42,14 +45,18 @@ public class DoubleDropsAbility extends Ability {
             }
         }
 
+        // NR-001: never duplicate a drop that is the block itself (ancient debris, silk-touched ores,
+        // ore blocks...). Otherwise place -> break -> place repeats forever and duplicates items.
+        Material self = block.getType();
         Collection<ItemStack> drops = block.getDrops(
                 context.getPlayer().getInventory().getItemInMainHand());
+        boolean dropped = false;
         for (ItemStack drop : drops) {
-            if (drop != null && !drop.getType().isAir()) {
-                block.getWorld().dropItemNaturally(block.getLocation(), drop.clone());
-            }
+            if (drop == null || drop.getType().isAir() || drop.getType() == self) continue;
+            block.getWorld().dropItemNaturally(block.getLocation(), drop.clone());
+            dropped = true;
         }
-        return true;
+        return dropped;
     }
 
     @Override

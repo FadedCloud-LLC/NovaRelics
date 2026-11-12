@@ -181,7 +181,6 @@ class CommandTest extends PluginTestBase {
     }
 
     @ParameterizedTest(name = "NR-012 rejects id \"{0}\"")
-    @Tag("regression")
     @ValueSource(strings = {"../escape", "..\\escape", "sub/dir", "../../evil_config"})
     @DisplayName("NR-012 create: ids cannot escape the relics folder")
     void createRejectsPathTraversal(String id) throws Exception {

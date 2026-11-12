@@ -67,44 +67,28 @@ public class RelicManager {
         return relics.remove(id) != null;
     }
 
+    /** Saves to {@code relics/<id>.yml}; refuses ids that are not safe file names (NR-012). */
     public boolean save(RelicDefinition def) {
-        File file = new File(plugin.getConfigManager().getRelicsFolder(),
-                def.getId() + ".yml");
+        File file = RelicIds.fileIn(plugin.getConfigManager().getRelicsFolder(), def.getId());
+        if (file == null) {
+            plugin.getLogger().warning("Refusing to save relic with invalid id '" + def.getId() + "'");
+            return false;
+        }
         return loader.save(def, file);
     }
 
     public boolean delete(String id) {
         if (!relics.containsKey(id)) return false;
-        File file = new File(plugin.getConfigManager().getRelicsFolder(), id + ".yml");
+        File file = RelicIds.fileIn(plugin.getConfigManager().getRelicsFolder(), id);
         relics.remove(id);
-        return !file.exists() || file.delete();
+        return file == null || !file.exists() || file.delete();
     }
 
+    /** Copies every field (including aura and enchantments) under {@code newId} and saves it. */
     public RelicDefinition duplicate(String sourceId, String newId) {
         RelicDefinition source = getRelic(sourceId);
-        if (source == null) return null;
-        // Shallow copy via file: save source as newId
-        RelicDefinition copy = new RelicDefinition(newId);
-        copy.setDisplayName(source.getDisplayName());
-        copy.setLore(new ArrayList<>(source.getLore()));
-        copy.setMaterial(source.getMaterial());
-        copy.setRarity(source.getRarity());
-        copy.setCustomModelData(source.getCustomModelData());
-        copy.setGlow(source.isGlow());
-        copy.setSkullTexture(source.getSkullTexture());
-        copy.setHeadDatabaseId(source.getHeadDatabaseId());
-        copy.setItemsAdderId(source.getItemsAdderId());
-        copy.setOraxenId(source.getOraxenId());
-        copy.setNexoId(source.getNexoId());
-        copy.setEnchantments(new LinkedHashMap<>(source.getEnchantments()));
-        copy.setItemFlags(new ArrayList<>(source.getItemFlags()));
-        copy.setPermission(source.getPermission());
-        copy.setCategory(source.getCategory());
-        copy.setMaxCharges(source.getMaxCharges());
-        copy.setTriggers(new EnumMap<>(source.getTriggers()));
-        copy.setCooldownSeconds(source.getCooldownSeconds());
-        copy.setCooldownType(source.getCooldownType());
-        copy.setCooldownSharedKey(source.getCooldownSharedKey());
+        if (source == null || !RelicIds.isValid(newId)) return null;
+        RelicDefinition copy = loader.copy(source, newId);
         register(copy);
         save(copy);
         return copy;

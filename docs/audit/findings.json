@@ -11,7 +11,9 @@
         "ability/impl/DoubleDropsAbility.java:13-37",
         "resources/relics/ore_charm.yml"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "fixed",
+      "fixedIn": "phase1-critical-fixes"
     },
     {
       "id": "NR-002",
@@ -21,7 +23,8 @@
       "files": [
         "NovaRelics.java:27-65"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "open"
     },
     {
       "id": "NR-003",
@@ -35,7 +38,8 @@
         "ability/impl/PhantomStrikeAbility.java:25",
         "ability/impl/PreventDeathAbility.java:34"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "open"
     },
     {
       "id": "NR-004",
@@ -48,7 +52,9 @@
         "ability/impl/WebTrapAbility.java",
         "ability/impl/AutoReplantAbility.java"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "fixed",
+      "fixedIn": "phase1-critical-fixes"
     },
     {
       "id": "NR-005",
@@ -59,7 +65,9 @@
         "ability/impl/FullRepairAbility.java:26-50",
         "trigger/impl/AnvilTrigger.java:44-61"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "fixed",
+      "fixedIn": "phase1-critical-fixes"
     },
     {
       "id": "NR-006",
@@ -70,7 +78,8 @@
         "ability/impl/FullRepairAbility.java:24",
         "resources/relics/mending_wool.yml"
       ],
-      "status": "needs-real-server"
+      "status": "needs-real-server",
+      "resolution": "open"
     },
     {
       "id": "NR-007",
@@ -80,7 +89,9 @@
       "files": [
         "ability/impl/KeepItemAbility.java:12-24"
       ],
-      "status": "needs-real-server"
+      "status": "needs-real-server",
+      "resolution": "fixed-pending-real-server-confirmation",
+      "fixedIn": "phase1-critical-fixes"
     },
     {
       "id": "NR-008",
@@ -92,7 +103,9 @@
         "command/sub/ExportSubCommand.java:40-42",
         "relic/RelicManager.java:83-111"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "fixed",
+      "fixedIn": "phase1-critical-fixes"
     },
     {
       "id": "NR-009",
@@ -102,7 +115,8 @@
       "files": [
         "util/MiniMsg.java:15-18,46-48,63-65"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "open"
     },
     {
       "id": "NR-010",
@@ -113,7 +127,9 @@
         "trigger/impl/JoinQuitTrigger.java:31",
         "cooldown/CooldownManager.java:106-108"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "fixed",
+      "fixedIn": "phase1-critical-fixes"
     },
     {
       "id": "NR-011",
@@ -125,7 +141,8 @@
         "storage/StorageManager.java",
         "trigger/impl/JoinQuitTrigger.java:21"
       ],
-      "status": "confirmed-static"
+      "status": "confirmed-static",
+      "resolution": "open"
     },
     {
       "id": "NR-012",
@@ -137,7 +154,9 @@
         "command/sub/ImportSubCommand.java:31",
         "relic/RelicManager.java:70-81"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "fixed",
+      "fixedIn": "phase1-critical-fixes"
     },
     {
       "id": "NR-013",
@@ -147,7 +166,8 @@
       "files": [
         "ability/impl/TeleportAbility.java:51-69"
       ],
-      "status": "confirmed-static"
+      "status": "confirmed-static",
+      "resolution": "open"
     },
     {
       "id": "NR-014",
@@ -157,7 +177,8 @@
       "files": [
         "ability/impl/PhantomStrikeAbility.java:13-23"
       ],
-      "status": "confirmed-static"
+      "status": "confirmed-static",
+      "resolution": "open"
     },
     {
       "id": "NR-015",
@@ -167,7 +188,8 @@
       "files": [
         "texture/SkullTextureUtil.java"
       ],
-      "status": "needs-real-server"
+      "status": "needs-real-server",
+      "resolution": "open"
     },
     {
       "id": "NR-016",
@@ -181,7 +203,8 @@
         "relic/RelicLoader.java:79",
         "util/ParticleUtil.java"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "open"
     },
     {
       "id": "NR-017",
@@ -191,7 +214,8 @@
       "files": [
         "trigger/impl/EquipTrigger.java:48-70"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "open"
     },
     {
       "id": "NR-018",
@@ -201,7 +225,8 @@
       "files": [
         "trigger/impl/CommandTrigger.java:28-40"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "open"
     },
     {
       "id": "NR-019",
@@ -211,7 +236,8 @@
       "files": [
         "ability/impl/CooldownReductionAbility.java"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "open"
     },
     {
       "id": "NR-020",
@@ -223,7 +249,8 @@
         "ability/impl/GlowAbility.java",
         "ability/impl/WebTrapAbility.java"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "open"
     },
     {
       "id": "NR-021",
@@ -236,7 +263,8 @@
         "hook/HookManager.java",
         "resources/config.yml"
       ],
-      "status": "confirmed-static"
+      "status": "confirmed-static",
+      "resolution": "open"
     },
     {
       "id": "NR-022",
@@ -247,7 +275,8 @@
         "command/sub/GiveSubCommand.java:50-64",
         "command/sub/TakeSubCommand.java:49-59"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "open"
     },
     {
       "id": "NR-023",
@@ -257,7 +286,8 @@
       "files": [
         "pom.xml"
       ],
-      "status": "confirmed-jar-listing"
+      "status": "confirmed-jar-listing",
+      "resolution": "open"
     },
     {
       "id": "NR-024",
@@ -267,7 +297,8 @@
       "files": [
         "storage/*"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "open"
     },
     {
       "id": "NR-036",
@@ -277,7 +308,9 @@
       "files": [
         "config/ConfigManager.java:52-74,149-153"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "fixed",
+      "fixedIn": "phase1-critical-fixes"
     },
     {
       "id": "NR-025",
@@ -287,7 +320,8 @@
       "files": [
         "aura/AuraManager.java:86-113"
       ],
-      "status": "confirmed-static"
+      "status": "confirmed-static",
+      "resolution": "open"
     },
     {
       "id": "NR-026",
@@ -298,7 +332,8 @@
         "trigger/impl/JumpTrigger.java",
         "trigger/impl/MoveTrigger.java"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "open"
     },
     {
       "id": "NR-027",
@@ -308,7 +343,8 @@
       "files": [
         "trigger/TriggerManager.java:70-73"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "open"
     },
     {
       "id": "NR-028",
@@ -318,7 +354,8 @@
       "files": [
         "config/ConfigManager.java:112-124"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "open"
     },
     {
       "id": "NR-029",
@@ -330,7 +367,8 @@
         "ability/impl/PullAbility.java",
         "ability/impl/ShockwaveAbility.java"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "open"
     },
     {
       "id": "NR-030",
@@ -341,7 +379,8 @@
         "trigger/impl/ClickTrigger.java",
         "trigger/impl/BreakBlockTrigger.java"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "open"
     },
     {
       "id": "NR-031",
@@ -352,7 +391,8 @@
         "ability/impl/StealHealthAbility.java",
         "ability/impl/ConsumeRelicAbility.java"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "open"
     },
     {
       "id": "NR-032",
@@ -363,7 +403,8 @@
         "gui/RelicEditorGui.java",
         "gui/RelicListGui.java"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "open"
     },
     {
       "id": "NR-033",
@@ -373,7 +414,8 @@
       "files": [
         "trigger/TriggerManager.java:122-140"
       ],
-      "status": "confirmed-executed"
+      "status": "confirmed-executed",
+      "resolution": "open"
     },
     {
       "id": "NR-034",
@@ -383,7 +425,8 @@
       "files": [
         "gui/ChatInputManager.java"
       ],
-      "status": "confirmed-static"
+      "status": "confirmed-static",
+      "resolution": "open"
     },
     {
       "id": "NR-035",
@@ -393,7 +436,8 @@
       "files": [
         "storage/*Provider.java"
       ],
-      "status": "confirmed-static"
+      "status": "confirmed-static",
+      "resolution": "open"
     }
   ],
   "phase0": {
@@ -402,5 +446,13 @@
     "behaviourPass": 117,
     "regressionTests": 74,
     "evidence": "docs/audit/test-results/"
+  },
+  "phase1": {
+    "date": "2026-11-12",
+    "tests": 218,
+    "gatePass": 170,
+    "regressionTestsOpen": 48,
+    "coverageLinePct": 61.7,
+    "coverageBranchPct": 41.4
   }
 }

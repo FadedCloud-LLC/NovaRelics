@@ -175,6 +175,9 @@
     <build>
         <!-- Use the production classes as-is. No main sources live in this project. -->
         <outputDirectory>${project.basedir}/../target/classes</outputDirectory>
+        <!-- One directory per API generation: switching -Pmb-26.3 (Java 25) and the default
+             (Java 21) never reuses incompatible class files, so no `clean` is required. -->
+        <testOutputDirectory>${project.build.directory}/test-classes-${test.api.generation}</testOutputDirectory>
 
         <plugins>
             <plugin>

@@ -6,6 +6,7 @@ import dev.aponder.novarelics.relic.RelicDefinition;
 import dev.aponder.novarelics.util.MiniMsg;
 import org.bukkit.command.CommandSender;
 
+import dev.aponder.novarelics.relic.RelicIds;
 import java.io.File;
 import java.util.Collections;
 import java.util.List;
@@ -28,8 +29,14 @@ public class ImportSubCommand implements SubCommand {
             return true;
         }
 
-        String fileName = args[0].endsWith(".yml") ? args[0] : args[0] + ".yml";
-        File file = new File(plugin.getConfigManager().getRelicsFolder(), fileName);
+        String name = args[0].endsWith(".yml") ? args[0].substring(0, args[0].length() - 4) : args[0];
+        String fileName = name + ".yml";
+        File file = RelicIds.fileIn(plugin.getConfigManager().getRelicsFolder(), name);
+        if (file == null) {
+            MiniMsg.send(sender, MiniMsg.parse(plugin.getConfigManager().getMessage("invalid-relic-id",
+                    "<id>", name, "<rule>", RelicIds.RULE)));
+            return true;
+        }
 
         if (!file.exists()) {
             MiniMsg.send(sender, MiniMsg.parse(
@@ -41,6 +48,9 @@ public class ImportSubCommand implements SubCommand {
         try {
             RelicDefinition def = plugin.getRelicManager().getLoader().load(file);
             if (def == null) throw new IllegalArgumentException("Failed to parse relic file.");
+            if (!RelicIds.isValid(def.getId())) {
+                throw new IllegalArgumentException("invalid relic id '" + def.getId() + "' (" + RelicIds.RULE + ")");
+            }
             plugin.getRelicManager().register(def);
 
             MiniMsg.send(sender, MiniMsg.parse(

@@ -7,6 +7,24 @@ Machine-readable results:
 - [`test-results/mockbukkit-26.3.json`](test-results/mockbukkit-26.3.json)
 - JaCoCo CSVs and per-API link reports in [`test-results/`](test-results/)
 
+## Phase 1 update (2026-11-12, branch `phase1-critical-fixes`)
+
+| Generation | Total | Gate (behaviour + fixed findings) | Regression tests for open findings |
+|---|---|---|---|
+| 1.21 / JDK 21 | 218 | **170 / 170 pass** | 48 run: 42 fail (expected), 6 pass |
+| 26.3 / JDK 25 | 218 | **170 / 170 pass** | 48 run: 43 fail (expected), 5 pass |
+
+Fixed and moved into the gate: NR-001, NR-004, NR-005, NR-008 (all 15 bundled relics round-trip), NR-010, NR-012 and NR-036.
+
+New tests:
+- `RelicPersistenceTest`: export, comments, duplicate, ids and import.
+- `KeepItemTest`: NR-007 death → clear → respawn/relog sequence.
+- Positive controls for Vein Mine, Tree Feller, Ore Charm and Full Repair.
+
+Coverage: 61.7 % lines / 41.4 % branches.
+
+The Phase 0 baseline follows.
+
 ## Summary
 
 | Generation | JDK | MockBukkit | Total | Behaviour tests | Regression tests (open findings) | Skipped |

@@ -33,8 +33,9 @@ public class WebTrapAbility extends Ability {
                 e -> e instanceof LivingEntity && (includePlayer || !e.equals(player)))) {
 
             Location feet = e.getLocation().getBlock().getLocation();
-            if (feet.getBlock().getType().isAir()) {
-                feet.getBlock().setType(Material.COBWEB);
+            // NR-004: only place where the player could build (protection plugins can deny it)
+            if (feet.getBlock().getType().isAir()
+                    && dev.aponder.novarelics.util.BlockActions.placeAsPlayer(player, feet.getBlock(), Material.COBWEB)) {
                 placed.add(feet);
             }
         }

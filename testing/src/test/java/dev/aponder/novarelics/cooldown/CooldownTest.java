@@ -108,7 +108,6 @@ class CooldownTest extends PluginTestBase {
     // ---------------------------------------------------------------- regressions
 
     @Test
-    @Tag("regression")
     @DisplayName("NR-010 reconnecting does not reset cooldowns")
     void cooldownSurvivesReconnect() {
         click("timed");

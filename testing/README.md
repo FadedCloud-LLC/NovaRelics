@@ -22,7 +22,7 @@ mvn -B -f testing/pom.xml test -Dgroups=regression           # open-finding regr
 mvn -B -f testing/pom.xml clean test -Papi-matrix -Dtest=ApiCompatibilityTest   # all 44 Spigot/Paper APIs
 ```
 
-Run `clean` when switching profiles: test classes compiled for Java 25 cannot run on JDK 21.
+Each profile compiles tests into its own `target/test-classes-<generation>`, so switching profiles needs no `clean`.
 
 ## Results
 

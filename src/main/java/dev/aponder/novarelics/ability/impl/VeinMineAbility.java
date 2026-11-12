@@ -4,6 +4,7 @@ import dev.aponder.novarelics.NovaRelics;
 import dev.aponder.novarelics.ability.Ability;
 import dev.aponder.novarelics.ability.AbilityConfig;
 import dev.aponder.novarelics.ability.AbilityContext;
+import dev.aponder.novarelics.util.BlockActions;
 import dev.aponder.novarelics.util.MiniMsg;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -43,15 +44,10 @@ public class VeinMineAbility extends Ability {
         List<Block> vein = findVein(origin, targetMaterial, maxBlocks);
         if (vein.size() <= 1) return false;
 
-        ItemStack tool = player.getInventory().getItemInMainHand();
-        int broken = 0;
-        for (Block block : vein) {
-            if (block.equals(origin)) continue;
-            block.getDrops(tool).forEach(drop ->
-                    block.getWorld().dropItemNaturally(block.getLocation(), drop));
-            block.setType(Material.AIR);
-            broken++;
-        }
+        // NR-004: break each block as the player so protection plugins can deny it,
+        // tool durability applies and vanilla drop rules are used.
+        vein.remove(origin);
+        int broken = BlockActions.breakAsPlayer(player, vein);
 
         if (broken > 0) {
             String msg = plugin.getConfigManager().getMessage("ability-vein-mine",

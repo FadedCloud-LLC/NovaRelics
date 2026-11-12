@@ -18,6 +18,8 @@ public class PlaceBlockTrigger implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onPlace(BlockPlaceEvent event) {
+        // Placements made by an ability (e.g. web trap) must not re-trigger relics.
+        if (dev.aponder.novarelics.util.BlockActions.isCascading(event.getPlayer())) return;
         plugin.getTriggerManager().dispatchFromAllSlots(
                 event.getPlayer(), TriggerType.PLACE_BLOCK, event);
     }

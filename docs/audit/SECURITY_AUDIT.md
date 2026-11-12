@@ -4,12 +4,12 @@ Scope: plugin code and bundled defaults. No public servers or external services 
 
 | ID | Threat | Vector | Severity | Status |
 |---|---|---|---|---|
-| NR-001 | Item duplication | Ore Charm + place/break ancient debris or silk-touch ores | **Critical** | Confirmed (static) |
-| NR-004 | Protection bypass / grief | Vein Mine / Tree Feller / Web Trap / Auto Replant change blocks without events | **Critical** | Confirmed (static) |
-| NR-005 | Economy bypass | Full Repair result taken without paying | High | Confirmed (static) |
-| NR-010 | Cooldown bypass | Disconnect and reconnect | High | Confirmed (static) |
-| NR-012 | Arbitrary YAML write/read/delete in the server directory | `/nr create ../../X/config`, `/nr import ../x`, crafted `id:` | High (requires `novarelics.create`/`import`/`delete`) | Confirmed (static) |
-| NR-007 | Item destruction | KEEP_ITEM re-adds the item before the server clears the inventory | High | Needs real server |
+| NR-001 | Item duplication | Ore Charm + place/break ancient debris or silk-touch ores | **Critical** | **Fixed (Phase 1)** |
+| NR-004 | Protection bypass / grief | Vein Mine / Tree Feller / Web Trap / Auto Replant change blocks without events | **Critical** | **Fixed (Phase 1)** |
+| NR-005 | Economy bypass | Full Repair result taken without paying | High | **Fixed (Phase 1)** |
+| NR-010 | Cooldown bypass | Disconnect and reconnect | High | **Fixed (Phase 1)** |
+| NR-012 | Arbitrary YAML write/read/delete in the server directory | `/nr create ../../X/config`, `/nr import ../x`, crafted `id:` | High (requires `novarelics.create`/`import`/`delete`) | **Fixed (Phase 1)** |
+| NR-007 | Item destruction | KEEP_ITEM re-adds the item before the server clears the inventory | High | **Fixed (Phase 1); real-server confirmation pending** |
 | NR-013 | Map-boundary escape | Random teleport onto the Nether roof | Medium | Confirmed (static) |
 | NR-014 | Phasing through walls | Phantom Strike destination not validated | Medium | Confirmed (static) |
 | NR-030 | Use inside protected regions | `ClickTrigger` ignores denied interactions | Medium | Confirmed (static) |

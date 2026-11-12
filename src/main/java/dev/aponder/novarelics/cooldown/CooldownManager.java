@@ -103,7 +103,16 @@ public class CooldownManager {
         return player.getUniqueId();
     }
 
-    public void clearPlayer(UUID uuid) {
-        memoryCache.remove(uuid.toString());
+    /**
+     * Called when a player leaves: drops only <em>expired</em> entries. Active cooldowns are
+     * kept so disconnecting and reconnecting cannot reset them (NR-010). Memory stays bounded
+     * by (players seen recently) x (relics with an active cooldown).
+     */
+    public void pruneExpired(UUID uuid) {
+        long now = System.currentTimeMillis();
+        memoryCache.computeIfPresent(uuid.toString(), (k, map) -> {
+            map.values().removeIf(expiresAt -> expiresAt <= now);
+            return map.isEmpty() ? null : map;
+        });
     }
 }

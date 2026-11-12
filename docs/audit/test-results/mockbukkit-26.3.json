@@ -1,17 +1,18 @@
 {
  "generation": "26.3",
  "date": "2026-11-12",
- "total": 191,
+ "phase": "1",
+ "total": 218,
  "summary": {
-  "behaviour:PASS": 117,
-  "regression:FAIL": 69,
+  "behaviour:PASS": 170,
+  "regression:FAIL": 43,
   "regression:PASS": 5
  },
  "coveragePercent": {
-  "LINE": 59.0,
-  "BRANCH": 38.2,
-  "METHOD": 71.0,
-  "INSTRUCTION": 57.1
+  "LINE": 61.7,
+  "BRANCH": 41.3,
+  "METHOD": 73.9,
+  "INSTRUCTION": 59.9
  },
  "cases": [
   {
@@ -152,21 +153,21 @@
    "test": "allReferencedSymbolsExist(String)[2]",
    "kind": "regression",
    "status": "FAIL",
-   "message": "API surface: spigot-api-1.20.1\nReferenced platform symbols: 1313\nProblems: 9\n\nMISSING CLASS     net.kyori.adventure.text.Component\n        used in dev.aponder.novarelics.util.MiniMsg#parse\nMISSING CLASS     net.kyori.adventure.text.format.TextColor\n        used in dev.aponder.novarelics.util.ColorUt"
+   "message": "API surface: spigot-api-1.20.1\nReferenced platform symbols: 1407\nProblems: 9\n\nMISSING CLASS     net.kyori.adventure.text.Component\n        used in dev.aponder.novarelics.util.MiniMsg#parse\nMISSING CLASS     net.kyori.adventure.text.format.TextColor\n        used in dev.aponder.novarelics.util.ColorUt"
   },
   {
    "cls": "ApiCompatibilityTest",
    "test": "allReferencedSymbolsExist(String)[3]",
    "kind": "regression",
    "status": "FAIL",
-   "message": "API surface: spigot-api-26.3\nReferenced platform symbols: 1313\nProblems: 17\n\nCLASS/INTERFACE   org.bukkit.Sound#valueOf(Ljava/lang/String;)Lorg/bukkit/Sound; (compiled as class)\n        used in dev.aponder.novarelics.ability.impl.SoundAbility#execute\n        used in dev.aponder.novarelics.rarity.Rar"
+   "message": "API surface: spigot-api-26.3\nReferenced platform symbols: 1407\nProblems: 17\n\nCLASS/INTERFACE   org.bukkit.Sound#valueOf(Ljava/lang/String;)Lorg/bukkit/Sound; (compiled as class)\n        used in dev.aponder.novarelics.ability.impl.SoundAbility#execute\n        used in dev.aponder.novarelics.rarity.Rar"
   },
   {
    "cls": "ApiCompatibilityTest",
    "test": "allReferencedSymbolsExistOnMockBukkitApi",
    "kind": "regression",
    "status": "FAIL",
-   "message": "API surface: classpath-paper-api-26.3\nReferenced platform symbols: 1313\nProblems: 8\n\nCLASS/INTERFACE   org.bukkit.Sound#valueOf(Ljava/lang/String;)Lorg/bukkit/Sound; (compiled as class)\n        used in dev.aponder.novarelics.ability.impl.SoundAbility#execute\n        used in dev.aponder.novarelics.ra"
+   "message": "API surface: classpath-paper-api-26.3\nReferenced platform symbols: 1407\nProblems: 8\n\nCLASS/INTERFACE   org.bukkit.Sound#valueOf(Ljava/lang/String;)Lorg/bukkit/Sound; (compiled as class)\n        used in dev.aponder.novarelics.ability.impl.SoundAbility#execute\n        used in dev.aponder.novarelics.ra"
   },
   {
    "cls": "ApiCompatibilityTest",
@@ -192,30 +193,30 @@
   {
    "cls": "CommandTest",
    "test": "createRejectsPathTraversal(String)[1]",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "relic file written outside the relics folder: C:\\Users\\Ghost\\AppData\\Local\\Temp\\MockBukkit-14365886908017351364027814906\\NovaRelics-1.0.1\\escape.yml ==> expected: <false> but was: <true>"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "CommandTest",
    "test": "createRejectsPathTraversal(String)[2]",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "relic file written outside the relics folder: C:\\Users\\Ghost\\AppData\\Local\\Temp\\MockBukkit-6916971788589805469374911737\\NovaRelics-1.0.1\\escape.yml ==> expected: <false> but was: <true>"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "CommandTest",
    "test": "createRejectsPathTraversal(String)[3]",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "relic file written outside the relics folder: C:\\Users\\Ghost\\AppData\\Local\\Temp\\MockBukkit-2832105739850160087036053102\\NovaRelics-1.0.1\\relics\\sub\\dir.yml ==> expected: <false> but was: <true>"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "CommandTest",
    "test": "createRejectsPathTraversal(String)[4]",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "relic file written outside the relics folder: C:\\Users\\Ghost\\AppData\\Local\\Temp\\MockBukkit-9806172435713824149406057325\\evil_config.yml ==> expected: <false> but was: <true>"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "CommandTest",
@@ -521,114 +522,114 @@
   {
    "cls": "ConfigurationTest",
    "test": "saveLoadRoundTripPreservesEverything(String)[10]",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "Multiple Failures (2 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <CUSTOM_PARTICLE_AURA> but was: <SPIRAL_EFFECT>"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "ConfigurationTest",
    "test": "saveLoadRoundTripPreservesEverything(String)[11]",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "Multiple Failures (5 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES, HIDE_ENCHANTS]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.enabled ==> expected: <true> but was: <false>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <CIRCL"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "ConfigurationTest",
    "test": "saveLoadRoundTripPreservesEverything(String)[12]",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "Multiple Failures (4 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.enabled ==> expected: <true> but was: <false>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <PULSE_EFFECT> but wa"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "ConfigurationTest",
    "test": "saveLoadRoundTripPreservesEverything(String)[13]",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "Multiple Failures (2 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <CUSTOM_PARTICLE_AURA> but was: <SPIRAL_EFFECT>"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "ConfigurationTest",
    "test": "saveLoadRoundTripPreservesEverything(String)[14]",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "Multiple Failures (5 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.enabled ==> expected: <true> but was: <false>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <VOID_EFFECT> but was"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "ConfigurationTest",
    "test": "saveLoadRoundTripPreservesEverything(String)[15]",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "Multiple Failures (2 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <CUSTOM_PARTICLE_AURA> but was: <SPIRAL_EFFECT>"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "ConfigurationTest",
    "test": "saveLoadRoundTripPreservesEverything(String)[1]",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "Multiple Failures (2 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <CUSTOM_PARTICLE_AURA> but was: <SPIRAL_EFFECT>"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "ConfigurationTest",
    "test": "saveLoadRoundTripPreservesEverything(String)[2]",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "Multiple Failures (5 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.enabled ==> expected: <true> but was: <false>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <PULSE_EFFECT> but wa"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "ConfigurationTest",
    "test": "saveLoadRoundTripPreservesEverything(String)[3]",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "Multiple Failures (3 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.enabled ==> expected: <true> but was: <false>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <CIRCLE_EFFECT> but w"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "ConfigurationTest",
    "test": "saveLoadRoundTripPreservesEverything(String)[4]",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "Multiple Failures (2 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <CUSTOM_PARTICLE_AURA> but was: <SPIRAL_EFFECT>"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "ConfigurationTest",
    "test": "saveLoadRoundTripPreservesEverything(String)[5]",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "Multiple Failures (3 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.enabled ==> expected: <true> but was: <false>\n org.opentest4j.AssertionFailedError: aura.radius ==> expected: <1.2> but was: <1.0"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "ConfigurationTest",
    "test": "saveLoadRoundTripPreservesEverything(String)[6]",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "Multiple Failures (5 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.enabled ==> expected: <true> but was: <false>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <GROUND_RING> but was"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "ConfigurationTest",
    "test": "saveLoadRoundTripPreservesEverything(String)[7]",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "Multiple Failures (5 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.enabled ==> expected: <true> but was: <false>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <FIRE_EFFECT> but was"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "ConfigurationTest",
    "test": "saveLoadRoundTripPreservesEverything(String)[8]",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "Multiple Failures (4 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.enabled ==> expected: <true> but was: <false>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <SHADOW_EFFECT> but w"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "ConfigurationTest",
    "test": "saveLoadRoundTripPreservesEverything(String)[9]",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "Multiple Failures (4 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.enabled ==> expected: <true> but was: <false>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <LIGHTNING_EFFECT> bu"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "ConfigurationTest",
    "test": "translationMissingAKeyFallsBackToEnglish",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "falls back instead of printing the raw key ==> expected: not equal but was: <no-permission>"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "ConfigurationTest",
@@ -682,9 +683,9 @@
   {
    "cls": "CooldownTest",
    "test": "cooldownSurvivesReconnect",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "cooldown wiped by quit ==> expected: <true> but was: <false>"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "CooldownTest",
@@ -716,10 +717,31 @@
   },
   {
    "cls": "ExploitRegressionTest",
+   "test": "fullRepairChargesWhenAffordable",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ExploitRegressionTest",
+   "test": "fullRepairWithoutCostNeedsNoEconomy",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ExploitRegressionTest",
+   "test": "fullRepairWithoutEconomyIsDenied",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ExploitRegressionTest",
    "test": "fullRepairWithoutMoneyIsCancelled",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "\nWanted but not invoked:\ninventoryClickEvent.setCancelled(true);\n-> at org.bukkit.event.inventory.InventoryInteractEvent.setCancelled(InventoryInteractEvent.java:81)\nActually, there were zero interactions with this mock.\n"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "ExploitRegressionTest",
@@ -731,30 +753,51 @@
   {
    "cls": "ExploitRegressionTest",
    "test": "oreCharmPlaceAndBreakLoop",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "bonus ancient debris spawned: place + break repeats forever ==> expected: <0> but was: <1>"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ExploitRegressionTest",
+   "test": "oreCharmRespectsDisabledDropsAndCreative",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "ExploitRegressionTest",
    "test": "oreCharmSilkTouchLoop",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "bonus ore block spawned: place + break repeats forever ==> expected: <0> but was: <1>"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ExploitRegressionTest",
+   "test": "treeFellerFellsWhenAllowed",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "ExploitRegressionTest",
    "test": "treeFellerRespectsProtection",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "protected log was felled ==> expected: <OAK_LOG> but was: <AIR>"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ExploitRegressionTest",
+   "test": "veinMineBreaksVeinWhenAllowed",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "ExploitRegressionTest",
    "test": "veinMineRespectsProtection",
-   "kind": "regression",
-   "status": "FAIL",
-   "message": "protected block was mined ==> expected: <IRON_ORE> but was: <AIR>"
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "GuiTest",
@@ -904,6 +947,34 @@
    "message": null
   },
   {
+   "cls": "KeepItemTest",
+   "test": "keepInventoryLeavesEverythingAlone",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "KeepItemTest",
+   "test": "relicReturnedOnJoinAfterLeavingDead",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "KeepItemTest",
+   "test": "relicReturnedOnRespawn",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "KeepItemTest",
+   "test": "stackAmountPreserved",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
    "cls": "LifecycleTest",
    "test": "createsDefaultFiles",
    "kind": "behaviour",
@@ -965,6 +1036,125 @@
    "kind": "regression",
    "status": "FAIL",
    "message": "Architecture Violation [Priority: MEDIUM] - Rule 'no classes that reside in a package 'dev.aponder.novarelics..' and reside outside of package 'dev.aponder.novarelics.platform.paper..' should depend on classes that reside in a package 'net.kyori..'' was violated (33 times):\nField <dev.aponder.novare"
+  },
+  {
+   "cls": "RelicPersistenceTest",
+   "test": "auraTogglePersists",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "RelicPersistenceTest",
+   "test": "createRejectsInvalidIdWithMessage",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "RelicPersistenceTest",
+   "test": "duplicateIsDeep",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "RelicPersistenceTest",
+   "test": "enchantmentsAcceptKeysAndLegacyNames",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "RelicPersistenceTest",
+   "test": "exportDoesNotTouchLiveFile",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "RelicPersistenceTest",
+   "test": "idRules(String, boolean)[1]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "RelicPersistenceTest",
+   "test": "idRules(String, boolean)[2]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "RelicPersistenceTest",
+   "test": "idRules(String, boolean)[3]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "RelicPersistenceTest",
+   "test": "idRules(String, boolean)[4]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "RelicPersistenceTest",
+   "test": "idRules(String, boolean)[5]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "RelicPersistenceTest",
+   "test": "idRules(String, boolean)[6]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "RelicPersistenceTest",
+   "test": "idRules(String, boolean)[7]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "RelicPersistenceTest",
+   "test": "importRejectsPathsOutsideRelics(String)[1]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "RelicPersistenceTest",
+   "test": "importRejectsPathsOutsideRelics(String)[2]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "RelicPersistenceTest",
+   "test": "importRejectsPathsOutsideRelics(String)[3]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "RelicPersistenceTest",
+   "test": "loaderSkipsUnsafeIds",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "RelicPersistenceTest",
+   "test": "saveKeepsCommentsAndUnknownKeys",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
   },
   {
    "cls": "StorageTest",

@@ -28,7 +28,14 @@ Original scope:
 - Add the GitHub Actions `ci.yml` (PR tier) and `nightly.yml` (matrix) skeletons.
 - **Effort:** M. **Risk:** none to runtime.
 
-## Phase 1 — Critical exploits and data loss
+## Phase 1 — Critical exploits and data loss ✅ DONE (2026-11-12, branch `phase1-critical-fixes`)
+All 8 items below are fixed and covered by gate tests on MockBukkit 1.21 and 26.3. NR-007 still needs real-server confirmation.
+
+Results: 218 tests; 170 gate tests green; 48 regression tests left for later phases. Coverage 61.7 % lines / 41.4 % branches.
+
+Next: **Phase 2 (compatibility).** Phase 2 needs the owner's decision on the platform direction (relocated Adventure + Paper adapter, the recommended option, or Paper-only). Its real-server step needs EULA confirmation.
+
+
 | Order | Finding | Change | Effort |
 |---|---|---|---|
 | 1 | NR-001 | Exclude self-dropping blocks; track placed blocks; fix `ore_charm.yml` | S |

@@ -34,10 +34,10 @@ class LifecycleTest extends PluginTestBase {
 
     @Test
     void registersTriggerAndGuiListeners() {
-        // 22 trigger listeners + ChatInputManager
+        // 22 trigger listeners + ChatInputManager + KeptItems (NR-007)
         long listenerObjects = HandlerList.getRegisteredListeners(plugin).stream()
                 .map(l -> l.getListener()).distinct().count();
-        assertEquals(23, listenerObjects);
+        assertEquals(24, listenerObjects);
     }
 
     @Test

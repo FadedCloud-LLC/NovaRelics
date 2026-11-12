@@ -78,7 +78,6 @@ class ConfigurationTest extends PluginTestBase {
     }
 
     @Test
-    @Tag("regression")
     @DisplayName("NR-036 a message key deleted from a language file falls back instead of printing the raw key")
     void translationMissingAKeyFallsBackToEnglish() throws Exception {
         plugin.getConfig().set("language", "es");
@@ -231,7 +230,6 @@ class ConfigurationTest extends PluginTestBase {
     }
 
     @ParameterizedTest(name = "NR-008 round-trip {0}")
-    @Tag("regression")
     @org.junit.jupiter.params.provider.MethodSource("bundledRelicFiles")
     @DisplayName("NR-008 saving a relic must not lose configuration")
     void saveLoadRoundTripPreservesEverything(String id) throws Exception {

@@ -18,6 +18,8 @@ A machine-readable copy of these findings is in [`findings.json`](findings.json)
 > - **NR-009 was narrowed.** Hex and gradients work on Paper; only `&` codes are broken there. It is downgraded to Medium.
 > - **NR-036 was added.** Deleted language keys are shown raw to players.
 >
+> **Phase 1 update (2026-11-12): 8 findings fixed** on branch `phase1-critical-fixes`: NR-001, NR-004, NR-005, NR-007 (still needs real-server confirmation), NR-008, NR-010, NR-012 and NR-036. Each fix has passing regression tests plus positive controls. **28 findings remain open.**
+>
 > Totals: **36 findings — 4 Critical, 7 High, 14 Medium, 11 Low.**
 
 ---

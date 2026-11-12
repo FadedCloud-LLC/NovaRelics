@@ -6,6 +6,7 @@ import dev.aponder.novarelics.relic.RelicDefinition;
 import dev.aponder.novarelics.util.MiniMsg;
 import org.bukkit.command.CommandSender;
 
+import dev.aponder.novarelics.relic.RelicIds;
 import java.io.File;
 import java.util.Collections;
 import java.util.List;
@@ -37,9 +38,11 @@ public class ExportSubCommand implements SubCommand {
             return true;
         }
 
-        String fileName = id + ".yml";
-        File exportFile = new File(plugin.getConfigManager().getRelicsFolder(), fileName);
-        boolean saved = plugin.getRelicManager().getLoader().save(relic, exportFile);
+        // NR-008: export to exports/ instead of overwriting the live file in relics/.
+        String fileName = "exports/" + id + ".yml";
+        File exportFile = RelicIds.fileIn(new File(plugin.getDataFolder(), "exports"), id);
+        if (exportFile != null && exportFile.exists()) exportFile.delete(); // fresh, complete export
+        boolean saved = exportFile != null && plugin.getRelicManager().getLoader().save(relic, exportFile);
 
         if (saved) {
             MiniMsg.send(sender, MiniMsg.parse(

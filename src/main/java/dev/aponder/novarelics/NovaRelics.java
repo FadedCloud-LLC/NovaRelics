@@ -44,6 +44,7 @@ public class NovaRelics extends JavaPlugin {
     private GuiManager guiManager;
     private ChatInputManager chatInputManager;
     private RecipeManager recipeManager;
+    private dev.aponder.novarelics.relic.KeptItems keptItems;
 
     private boolean isVersionSupported() {
         String bukkit = Bukkit.getBukkitVersion();
@@ -92,6 +93,8 @@ public class NovaRelics extends JavaPlugin {
         // 6. Triggers (registers event listeners)
         triggerManager = new TriggerManager(this);
         triggerManager.register();
+        keptItems = new dev.aponder.novarelics.relic.KeptItems(this);
+        getServer().getPluginManager().registerEvents(keptItems, this);
 
         // 7. Aura rendering
         auraManager = new AuraManager(this);
@@ -165,4 +168,5 @@ public class NovaRelics extends JavaPlugin {
     public GuiManager getGuiManager() { return guiManager; }
     public ChatInputManager getChatInputManager() { return chatInputManager; }
     public RecipeManager getRecipeManager() { return recipeManager; }
+    public dev.aponder.novarelics.relic.KeptItems getKeptItems() { return keptItems; }
 }

@@ -8,7 +8,6 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Iterator;
-import java.util.List;
 
 public class KeepItemAbility extends Ability {
 
@@ -20,20 +19,21 @@ public class KeepItemAbility extends Ability {
     public boolean execute(AbilityConfig config, AbilityContext context) {
         PlayerDeathEvent event = context.getEvent(PlayerDeathEvent.class);
         if (event == null) return false;
+        if (event.getKeepInventory()) return true; // nothing is dropped or cleared
 
-        // Remove this relic from the drops list so it returns to the player
-        List<ItemStack> drops = event.getDrops();
-        Iterator<ItemStack> it = drops.iterator();
+        // NR-007: take the relic out of the drops and hand it back on respawn. Putting it into
+        // the inventory here would be wiped: the server clears it after this event.
+        ItemStack relicItem = context.getRelicItem();
+        Iterator<ItemStack> it = event.getDrops().iterator();
         while (it.hasNext()) {
             ItemStack drop = it.next();
-            if (drop != null && drop.equals(context.getRelicItem())) {
+            if (drop != null && drop.isSimilar(relicItem)) {
                 it.remove();
-                // Re-add to inventory on respawn via PlayerRespawnEvent listener in trigger
-                context.getPlayer().getInventory().addItem(drop);
-                break;
+                plugin.getKeptItems().keep(context.getPlayer(), drop);
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     @Override
