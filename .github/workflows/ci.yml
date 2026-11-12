@@ -1,0 +1,84 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build plugin (Java 17 bytecode)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Package
+        run: mvn -B -ntp package -DskipTests
+      - name: Verify bytecode targets Java 17 (class major 61) for 1.20.1-1.20.4 servers
+        run: |
+          major=$(javap -v -cp target/classes dev.aponder.novarelics.NovaRelics | awk '/major version/ {print $3}')
+          echo "major=$major"
+          test "$major" = "61"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NovaRelics-jar
+          path: target/NovaRelics-*.jar
+          if-no-files-found: error
+
+  mockbukkit:
+    name: MockBukkit ${{ matrix.generation }} (JDK ${{ matrix.jdk }})
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - generation: '1.21'
+            profile: mb-1.21
+            jdk: '21'
+          - generation: '26.3'
+            profile: mb-26.3
+            jdk: '25'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.jdk }}
+          cache: maven
+      - name: Compile plugin classes
+        run: mvn -B -ntp package -DskipTests
+
+      # Gate: every behaviour test must pass.
+      - name: Behaviour tests (must pass)
+        run: mvn -B -ntp -f testing/pom.xml verify -P${{ matrix.profile }} -DexcludedGroups=regression
+
+      # Regression tests document confirmed defects (docs/audit/REGRESSION_TEST_PLAN.md).
+      # They are executed and reported on every run; they are expected to fail until each
+      # finding is fixed, after which the tag is removed and they join the gate above.
+      - name: Regression tests for open findings (report only)
+        if: always()
+        continue-on-error: true
+        run: mvn -B -ntp -f testing/pom.xml test -P${{ matrix.profile }} -Dgroups=regression -Djacoco.skip=true
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports-mockbukkit-${{ matrix.generation }}
+          path: |
+            testing/target/surefire-reports
+            testing/target/site/jacoco
+            testing/target/api-compat

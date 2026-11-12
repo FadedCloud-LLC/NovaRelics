@@ -1,0 +1,16 @@
+API surface: paper-api-1.21
+Referenced platform symbols: 1313
+Problems: 6
+
+MISSING FIELD     org.bukkit.Particle#CRIT_MAGIC
+        used in dev.aponder.novarelics.aura.impl.LightningAuraRenderer#render
+MISSING FIELD     org.bukkit.Particle#SPELL_WITCH
+        used in dev.aponder.novarelics.aura.impl.MagicAuraRenderer#render
+MISSING FIELD     org.bukkit.potion.PotionEffectType#CONFUSION
+        used in dev.aponder.novarelics.ability.impl.CureAbility#buildNegativeSet
+MISSING FIELD     org.bukkit.potion.PotionEffectType#HARM
+        used in dev.aponder.novarelics.ability.impl.CureAbility#buildNegativeSet
+MISSING FIELD     org.bukkit.potion.PotionEffectType#SLOW
+        used in dev.aponder.novarelics.ability.impl.CureAbility#buildNegativeSet
+MISSING FIELD     org.bukkit.potion.PotionEffectType#SLOW_DIGGING
+        used in dev.aponder.novarelics.ability.impl.CureAbility#buildNegativeSet

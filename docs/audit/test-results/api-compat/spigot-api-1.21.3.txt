@@ -1,0 +1,50 @@
+API surface: spigot-api-1.21.3
+Referenced platform symbols: 1313
+Problems: 17
+
+CLASS/INTERFACE   org.bukkit.Sound#valueOf(Ljava/lang/String;)Lorg/bukkit/Sound; (compiled as class)
+        used in dev.aponder.novarelics.ability.impl.SoundAbility#execute
+        used in dev.aponder.novarelics.rarity.RarityDefinition#getBukkitSound
+MISSING CLASS     net.kyori.adventure.text.Component
+        used in dev.aponder.novarelics.util.MiniMsg#parse
+MISSING CLASS     net.kyori.adventure.text.format.TextColor
+        used in dev.aponder.novarelics.util.ColorUtil#fromHex
+        used in dev.aponder.novarelics.util.ColorUtil#interpolate
+MISSING CLASS     net.kyori.adventure.text.minimessage.MiniMessage
+        used in dev.aponder.novarelics.util.MiniMsg#<clinit>
+        used in dev.aponder.novarelics.util.MiniMsg#parse
+        used in dev.aponder.novarelics.util.MiniMsg#serialize
+        used in dev.aponder.novarelics.util.MiniMsg#strip
+MISSING CLASS     net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
+        used in dev.aponder.novarelics.util.MiniMsg#<clinit>
+        used in dev.aponder.novarelics.util.MiniMsg#parse
+        used in dev.aponder.novarelics.util.MiniMsg#send
+        used in dev.aponder.novarelics.util.MiniMsg#toLegacy
+MISSING FIELD     org.bukkit.Particle#CRIT_MAGIC
+        used in dev.aponder.novarelics.aura.impl.LightningAuraRenderer#render
+MISSING FIELD     org.bukkit.Particle#SPELL_WITCH
+        used in dev.aponder.novarelics.aura.impl.MagicAuraRenderer#render
+MISSING FIELD     org.bukkit.attribute.Attribute#GENERIC_MAX_HEALTH
+        used in dev.aponder.novarelics.ability.impl.GainHealthOnKillAbility#execute
+        used in dev.aponder.novarelics.ability.impl.HealAbility#execute
+        used in dev.aponder.novarelics.ability.impl.NearbyHealAbility#execute
+        used in dev.aponder.novarelics.ability.impl.PreventDeathAbility#execute
+        used in dev.aponder.novarelics.ability.impl.StealHealthAbility#execute
+MISSING FIELD     org.bukkit.potion.PotionEffectType#CONFUSION
+        used in dev.aponder.novarelics.ability.impl.CureAbility#buildNegativeSet
+MISSING FIELD     org.bukkit.potion.PotionEffectType#HARM
+        used in dev.aponder.novarelics.ability.impl.CureAbility#buildNegativeSet
+MISSING FIELD     org.bukkit.potion.PotionEffectType#SLOW
+        used in dev.aponder.novarelics.ability.impl.CureAbility#buildNegativeSet
+MISSING FIELD     org.bukkit.potion.PotionEffectType#SLOW_DIGGING
+        used in dev.aponder.novarelics.ability.impl.CureAbility#buildNegativeSet
+MISSING METHOD    org.bukkit.command.ConsoleCommandSender#sendMessage(Lnet/kyori/adventure/text/Component;)V
+        used in dev.aponder.novarelics.NovaRelics#console
+MISSING METHOD    org.bukkit.entity.Player#getTargetEntity(IZ)Lorg/bukkit/entity/Entity;
+        used in dev.aponder.novarelics.ability.impl.PhantomStrikeAbility#execute
+MISSING METHOD    org.bukkit.entity.Player#sendActionBar(Ljava/lang/String;)V
+        used in dev.aponder.novarelics.ability.impl.ActionBarAbility#execute
+MISSING METHOD    org.bukkit.entity.Player#sendMessage(Lnet/kyori/adventure/text/Component;)V
+        used in dev.aponder.novarelics.ability.impl.BroadcastAbility#execute
+MISSING METHOD    org.bukkit.event.entity.PlayerDeathEvent#setCancelled(Z)V
+        used in dev.aponder.novarelics.ability.impl.PreventDeathAbility#execute

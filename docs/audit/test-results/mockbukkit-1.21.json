@@ -1,0 +1,1355 @@
+{
+ "generation": "1.21",
+ "date": "2026-11-12",
+ "total": 191,
+ "summary": {
+  "behaviour:PASS": 117,
+  "regression:FAIL": 68,
+  "regression:PASS": 6
+ },
+ "coveragePercent": {
+  "LINE": 59.0,
+  "BRANCH": 38.3,
+  "METHOD": 71.0,
+  "INSTRUCTION": 57.1
+ },
+ "cases": [
+  {
+   "cls": "AbilityTest",
+   "test": "consumeRelicFailsWhenMissing",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "expected: <false> but was: <true>"
+  },
+  {
+   "cls": "AbilityTest",
+   "test": "consumeRelicRemovesFromInventory",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "AbilityTest",
+   "test": "cureRemovesOnlyNegativeEffectsByDefault",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "AbilityTest",
+   "test": "disableRevertsTemporaryFlight",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "survival player kept permanent flight after plugin disable ==> expected: <false> but was: <true>"
+  },
+  {
+   "cls": "AbilityTest",
+   "test": "eventSpecificAbilitiesRefuseOtherEvents",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "AbilityTest",
+   "test": "exceptionsInsideAbilitiesAreContained",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "AbilityTest",
+   "test": "feedRestoresHunger",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "AbilityTest",
+   "test": "flightRestoresPreviousState",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "temporary flight must not revoke flight the player already had ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "AbilityTest",
+   "test": "giveItemAndXp",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "AbilityTest",
+   "test": "healFlatPercentAndCapped",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "AbilityTest",
+   "test": "invincibilityAndFireNearby",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "AbilityTest",
+   "test": "knockbackZeroVector",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "velocity must be finite ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "AbilityTest",
+   "test": "launchAndChargeSetVelocityAndResetFall",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "AbilityTest",
+   "test": "messageAndBroadcast",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "AbilityTest",
+   "test": "potionEffectAppliesAndRejectsUnknown",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "AbilityTest",
+   "test": "reduceDamageAppliesMultiplierAndFlatNeverNegative",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "AbilityTest",
+   "test": "registryKnowsAllAbilitiesAndRejectsUnknown",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "AbilityTest",
+   "test": "teleportToCoordinates",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ApiCompatibilityTest",
+   "test": "allReferencedSymbolsExist(String)[1]",
+   "kind": "regression",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ApiCompatibilityTest",
+   "test": "allReferencedSymbolsExist(String)[2]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "API surface: spigot-api-1.20.1\nReferenced platform symbols: 1313\nProblems: 9\n\nMISSING CLASS     net.kyori.adventure.text.Component\n        used in dev.aponder.novarelics.util.MiniMsg#parse\nMISSING CLASS     net.kyori.adventure.text.format.TextColor\n        used in dev.aponder.novarelics.util.ColorUt"
+  },
+  {
+   "cls": "ApiCompatibilityTest",
+   "test": "allReferencedSymbolsExist(String)[3]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "API surface: spigot-api-1.21\nReferenced platform symbols: 1313\nProblems: 17\n\nCLASS/INTERFACE   org.bukkit.Sound#valueOf(Ljava/lang/String;)Lorg/bukkit/Sound; (compiled as class)\n        used in dev.aponder.novarelics.ability.impl.SoundAbility#execute\n        used in dev.aponder.novarelics.rarity.Rar"
+  },
+  {
+   "cls": "ApiCompatibilityTest",
+   "test": "allReferencedSymbolsExistOnMockBukkitApi",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "API surface: classpath-paper-api-1.21\nReferenced platform symbols: 1313\nProblems: 8\n\nCLASS/INTERFACE   org.bukkit.Sound#valueOf(Ljava/lang/String;)Lorg/bukkit/Sound; (compiled as class)\n        used in dev.aponder.novarelics.ability.impl.SoundAbility#execute\n        used in dev.aponder.novarelics.ra"
+  },
+  {
+   "cls": "ApiCompatibilityTest",
+   "test": "scannerFindsPlatformReferences",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "adminParentPermissionGrantsChildren",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "createRegistersAndSavesFile",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "createRejectsPathTraversal(String)[1]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "relic file written outside the relics folder: C:\\Users\\Ghost\\AppData\\Local\\Temp\\MockBukkit-19613745674868216688266798395\\NovaRelics-1.0.1\\escape.yml ==> expected: <false> but was: <true>"
+  },
+  {
+   "cls": "CommandTest",
+   "test": "createRejectsPathTraversal(String)[2]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "relic file written outside the relics folder: C:\\Users\\Ghost\\AppData\\Local\\Temp\\MockBukkit-82136033614448841800238827248\\NovaRelics-1.0.1\\escape.yml ==> expected: <false> but was: <true>"
+  },
+  {
+   "cls": "CommandTest",
+   "test": "createRejectsPathTraversal(String)[3]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "relic file written outside the relics folder: C:\\Users\\Ghost\\AppData\\Local\\Temp\\MockBukkit-15237974513691242205819163125\\NovaRelics-1.0.1\\relics\\sub\\dir.yml ==> expected: <false> but was: <true>"
+  },
+  {
+   "cls": "CommandTest",
+   "test": "createRejectsPathTraversal(String)[4]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "relic file written outside the relics folder: C:\\Users\\Ghost\\AppData\\Local\\Temp\\MockBukkit-62599064012123989377207857423\\evil_config.yml ==> expected: <false> but was: <true>"
+  },
+  {
+   "cls": "CommandTest",
+   "test": "deleteRemovesRelicAndFile",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "editorIsPlayerOnly",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "giveClampsZeroAndNegativeToOne",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "giveCreatesTaggedRelicAndMarksDiscovered",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "giveFromConsoleWorks",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "giveOverflowIsNotLost",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "relics given to a full inventory must be dropped at the player's feet ==> expected: <2> but was: <0>"
+  },
+  {
+   "cls": "CommandTest",
+   "test": "giveRejectsNonNumericAmounts(String)[1]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "giveRejectsNonNumericAmounts(String)[2]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "giveRejectsNonNumericAmounts(String)[3]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "giveUnknownPlayerOrRelic",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "importLoadsFileAndReportsMissing",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "listAndInfoShowRelics",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "permissionRevokedAtRuntimeIsEnforced",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "protectedSubcommandsRequirePermission(String)[1]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "protectedSubcommandsRequirePermission(String)[2]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "protectedSubcommandsRequirePermission(String)[3]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "protectedSubcommandsRequirePermission(String)[4]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "protectedSubcommandsRequirePermission(String)[5]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "protectedSubcommandsRequirePermission(String)[6]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "protectedSubcommandsRequirePermission(String)[7]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "protectedSubcommandsRequirePermission(String)[8]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "publicSubcommandsWorkWithoutPermission(String)[1]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "publicSubcommandsWorkWithoutPermission(String)[2]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "publicSubcommandsWorkWithoutPermission(String)[3]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "reloadPicksUpNewFiles",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "tabCompletionHidesSubcommandsWithoutPermission",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "takeRemovesOne",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "expected: <4> but was: <0>"
+  },
+  {
+   "cls": "CommandTest",
+   "test": "takeReportsWhenMissing",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CommandTest",
+   "test": "unknownSubcommandAndNoArgs",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "abilityConfigAccessorsHandleBadValues",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "bundledLanguagesLoad(String)[1]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "bundledLanguagesLoad(String)[2]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "bundledRaritiesLoaded",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "corruptConfigStillEnablesWithDefaults",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "defaultConfigValues",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "emptyRaritiesFileUsesDefaults",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "firstRunInstallsAllBundledRelics",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "installed: harvest_charm.yml, mending_wool.yml, ore_charm.yml, teleport_crystal.yml, vampire_fang.yml ==> expected: <15> but was: <5>"
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "invalidYamlRelicIsSkippedWithoutBreakingOthers",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "loaderDefaultsForMinimalFile",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "loaderParsesAllSections",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "loaderToleratesWrongTypesAndUnknownMaterial",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "messagesReplacePrefixAndPlaceholders",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "missingMessageKeyFallsBackToKey",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "saveLoadRoundTripPreservesEverything(String)[10]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "Multiple Failures (2 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <CUSTOM_PARTICLE_AURA> but was: <SPIRAL_EFFECT>"
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "saveLoadRoundTripPreservesEverything(String)[11]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "Multiple Failures (5 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES, HIDE_ENCHANTS]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.enabled ==> expected: <true> but was: <false>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <CIRCL"
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "saveLoadRoundTripPreservesEverything(String)[12]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "Multiple Failures (4 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.enabled ==> expected: <true> but was: <false>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <PULSE_EFFECT> but wa"
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "saveLoadRoundTripPreservesEverything(String)[13]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "Multiple Failures (2 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <CUSTOM_PARTICLE_AURA> but was: <SPIRAL_EFFECT>"
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "saveLoadRoundTripPreservesEverything(String)[14]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "Multiple Failures (5 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.enabled ==> expected: <true> but was: <false>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <VOID_EFFECT> but was"
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "saveLoadRoundTripPreservesEverything(String)[15]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "Multiple Failures (2 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <CUSTOM_PARTICLE_AURA> but was: <SPIRAL_EFFECT>"
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "saveLoadRoundTripPreservesEverything(String)[1]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "Multiple Failures (2 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <CUSTOM_PARTICLE_AURA> but was: <SPIRAL_EFFECT>"
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "saveLoadRoundTripPreservesEverything(String)[2]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "Multiple Failures (5 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.enabled ==> expected: <true> but was: <false>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <PULSE_EFFECT> but wa"
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "saveLoadRoundTripPreservesEverything(String)[3]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "Multiple Failures (3 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.enabled ==> expected: <true> but was: <false>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <CIRCLE_EFFECT> but w"
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "saveLoadRoundTripPreservesEverything(String)[4]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "Multiple Failures (2 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <CUSTOM_PARTICLE_AURA> but was: <SPIRAL_EFFECT>"
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "saveLoadRoundTripPreservesEverything(String)[5]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "Multiple Failures (3 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.enabled ==> expected: <true> but was: <false>\n org.opentest4j.AssertionFailedError: aura.radius ==> expected: <1.2> but was: <1.0"
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "saveLoadRoundTripPreservesEverything(String)[6]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "Multiple Failures (5 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.enabled ==> expected: <true> but was: <false>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <GROUND_RING> but was"
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "saveLoadRoundTripPreservesEverything(String)[7]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "Multiple Failures (5 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.enabled ==> expected: <true> but was: <false>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <FIRE_EFFECT> but was"
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "saveLoadRoundTripPreservesEverything(String)[8]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "Multiple Failures (4 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.enabled ==> expected: <true> but was: <false>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <SHADOW_EFFECT> but w"
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "saveLoadRoundTripPreservesEverything(String)[9]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "Multiple Failures (4 failures)\n org.opentest4j.AssertionFailedError: item-flags ==> expected: <[HIDE_ATTRIBUTES]> but was: <[]>\n org.opentest4j.AssertionFailedError: aura.enabled ==> expected: <true> but was: <false>\n org.opentest4j.AssertionFailedError: aura.type ==> expected: <LIGHTNING_EFFECT> bu"
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "translationMissingAKeyFallsBackToEnglish",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "falls back instead of printing the raw key ==> expected: not equal but was: <no-permission>"
+  },
+  {
+   "cls": "ConfigurationTest",
+   "test": "unknownLanguageFallsBackToEnglish",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CooldownTest",
+   "test": "clearCooldown",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CooldownTest",
+   "test": "cooldownBlocksSecondUseAndNotifies",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CooldownTest",
+   "test": "cooldownExpires",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CooldownTest",
+   "test": "cooldownIsPerPlayerByDefault",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CooldownTest",
+   "test": "cooldownNoticeIsThrottled",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "cooldown notice sent 10 times in one second ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "CooldownTest",
+   "test": "cooldownReductionInMemoryMode",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "expected <= 30 s after a 50 % reduction, was 59 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "CooldownTest",
+   "test": "cooldownSurvivesReconnect",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "cooldown wiped by quit ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "CooldownTest",
+   "test": "globalCooldownIsShared",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CooldownTest",
+   "test": "placeholderStyleRemainingIsZeroWhenReady",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CooldownTest",
+   "test": "sharedKeyLinksRelics",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "CooldownTest",
+   "test": "zeroCooldownNeverBlocks",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ExploitRegressionTest",
+   "test": "fullRepairWithoutMoneyIsCancelled",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "\nWanted but not invoked:\ninventoryClickEvent.setCancelled(true);\n-> at org.bukkit.event.inventory.InventoryInteractEvent.setCancelled(InventoryInteractEvent.java:81)\nActually, there were zero interactions with this mock.\n"
+  },
+  {
+   "cls": "ExploitRegressionTest",
+   "test": "oreCharmDoublesNormalDrop",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ExploitRegressionTest",
+   "test": "oreCharmPlaceAndBreakLoop",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "bonus ancient debris spawned: place + break repeats forever ==> expected: <0> but was: <1>"
+  },
+  {
+   "cls": "ExploitRegressionTest",
+   "test": "oreCharmSilkTouchLoop",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "bonus ore block spawned: place + break repeats forever ==> expected: <0> but was: <1>"
+  },
+  {
+   "cls": "ExploitRegressionTest",
+   "test": "treeFellerRespectsProtection",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "protected log was felled ==> expected: <OAK_LOG> but was: <AIR>"
+  },
+  {
+   "cls": "ExploitRegressionTest",
+   "test": "veinMineRespectsProtection",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "protected block was mined ==> expected: <IRON_ORE> but was: <AIR>"
+  },
+  {
+   "cls": "GuiTest",
+   "test": "clickingRelicOpensItsEditor",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "GuiTest",
+   "test": "clicksInGuiAreCancelled",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "GuiTest",
+   "test": "closingUnregistersGuiListener",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "GuiTest",
+   "test": "dragIntoGuiIsCancelled",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "items dragged into the GUI would be deleted on the next refresh ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "GuiTest",
+   "test": "editorOpenedForUnknownRelicReportsIt",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "GuiTest",
+   "test": "editorOpensRelicList",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "GuiTest",
+   "test": "rarityButtonCyclesAndSaves",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ItemTest",
+   "test": "airMaterialFallsBackToPaper",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ItemTest",
+   "test": "ampersandCodesTranslated",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "expected: <\u00a7aGreen> but was: <&aGreen>"
+  },
+  {
+   "cls": "ItemTest",
+   "test": "builtRelicCarriesPersistentId",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ItemTest",
+   "test": "colorUtil",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ItemTest",
+   "test": "customModelDataApplied",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ItemTest",
+   "test": "forgedLookalikeWithoutTagIsNotARelic",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ItemTest",
+   "test": "hexColoursAreNotDownsampled(String)[1]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ItemTest",
+   "test": "hexColoursAreNotDownsampled(String)[2]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ItemTest",
+   "test": "hexColoursAreNotDownsampled(String)[3]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ItemTest",
+   "test": "loreStartsWithRarityPrefixAndGlowHidesEnchant",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ItemTest",
+   "test": "miniMessageBasicsToLegacy",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ItemTest",
+   "test": "nonRelicsAreRejected",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ItemTest",
+   "test": "relicIdSurvivesCloneAndSerialization",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "ItemTest",
+   "test": "repairHelpers",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "LifecycleTest",
+   "test": "createsDefaultFiles",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "LifecycleTest",
+   "test": "enablesAndWiresAllServices",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "LifecycleTest",
+   "test": "loadsBundledRelicsOnFirstRun",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "LifecycleTest",
+   "test": "registersCommandWithAliases",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "LifecycleTest",
+   "test": "registersTriggerAndGuiListeners",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "LifecycleTest",
+   "test": "reloadDoesNotDuplicateListenersOrTasks",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "LifecycleTest",
+   "test": "startsAuraTaskAndCancelsItOnDisable",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "PlatformIsolationTest",
+   "test": "coreDoesNotDependOnPaperPackages",
+   "kind": "regression",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "PlatformIsolationTest",
+   "test": "coreDoesNotDependOnUnrelocatedAdventure",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "Architecture Violation [Priority: MEDIUM] - Rule 'no classes that reside in a package 'dev.aponder.novarelics..' and reside outside of package 'dev.aponder.novarelics.platform.paper..' should depend on classes that reside in a package 'net.kyori..'' was violated (33 times):\nField <dev.aponder.novare"
+  },
+  {
+   "cls": "StorageTest",
+   "test": "brokenStorageDisablesPlugin",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "plugin stayed enabled with unusable storage ==> Unexpected exception thrown: java.lang.NullPointerException: Cannot invoke \"com.zaxxer.hikari.HikariDataSource.getConnection()\" because \"this.dataSource\" is null"
+  },
+  {
+   "cls": "StorageTest",
+   "test": "chargesRoundTrip",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "StorageTest",
+   "test": "concurrentWritesFromManyThreads",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "StorageTest",
+   "test": "cooldownRowsUpsertAndClear",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "StorageTest",
+   "test": "hostileStringsAreStoredLiterally",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "StorageTest",
+   "test": "playerDataPersistsAcrossRestart",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "StorageTest",
+   "test": "playerDataPersistsAcrossUnload",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "StorageTest",
+   "test": "usesSqliteByDefault",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "armorEquipFromPlayerInventory",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "EQUIP should fire for armor slots ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "breakAndPlaceBlock",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "cancelledBreakDoesNotFire",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "clickIgnoresOffHandEventsPhysicalAndNonRelics",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "clickMapping(Action, boolean, String)[1]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "clickMapping(Action, boolean, String)[2]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "clickMapping(Action, boolean, String)[3]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "clickMapping(Action, boolean, String)[4]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "clickMapping(Action, boolean, String)[5]",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "commandTriggerFiresOnce",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "each ability once ==> expected: <[A, B]> but was: <[A, B, A, B]>"
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "consumeOnlyForTheConsumedRelic",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "deniedInteractionDoesNotFire",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "expected: <[]> but was: <[RIGHT_CLICK]>"
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "duplicateArmorRelicFiresOnce",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "expected: <[SNEAK]> but was: <[SNEAK, SNEAK]>"
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "hotbarEquipAndUnequip",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "killMobFiresForKillerOnly",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "moveIsThrottledToOncePerSecond",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "passiveRelicInOffHandAndArmorFires",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "relicPermissionBlocksDispatch",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "stressManyEventsManyPlayersNoErrors",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "triggerEnumParsing",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "triggerStateReleasedOnQuit",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "MoveTrigger.lastFire still holds the player ==> expected: <false> but was: <true>"
+  },
+  {
+   "cls": "TriggerTest",
+   "test": "worldChangeAndQuit",
+   "kind": "behaviour",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnMockBukkitReportedVersion",
+   "kind": "regression",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[10]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 1.21.2 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[11]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 1.21.3 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[12]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 1.21.4 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[13]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 1.21.5 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[14]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 1.21.6 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[15]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 1.21.7 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[16]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 1.21.8 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[17]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 1.21.9 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[18]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 1.21.10 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[19]",
+   "kind": "regression",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[1]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 1.20 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[20]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 26.1 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[21]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 26.1.1 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[22]",
+   "kind": "regression",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[23]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 26.2 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[24]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 26.3 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[2]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 1.20.1 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[3]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 1.20.2 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[4]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 1.20.3 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[5]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 1.20.4 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[6]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 1.20.5 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[7]",
+   "kind": "regression",
+   "status": "PASS",
+   "message": null
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[8]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 1.21 ==> expected: <true> but was: <false>"
+  },
+  {
+   "cls": "VersionGateTest",
+   "test": "enablesOnSupportedVersion(String)[9]",
+   "kind": "regression",
+   "status": "FAIL",
+   "message": "disabled itself on 1.21.1 ==> expected: <true> but was: <false>"
+  }
+ ]
+}
