@@ -1,0 +1,458 @@
+{
+  "auditDate": "2026-11-12",
+  "commit": "b7fc158",
+  "findings": [
+    {
+      "id": "NR-001",
+      "severity": "Critical",
+      "category": "exploit/duplication",
+      "summary": "Ore Charm DOUBLE_DROPS allows infinite duplication via place-and-break (ancient debris, silk-touch ores)",
+      "files": [
+        "ability/impl/DoubleDropsAbility.java:13-37",
+        "resources/relics/ore_charm.yml"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "fixed",
+      "fixedIn": "phase1-critical-fixes"
+    },
+    {
+      "id": "NR-002",
+      "severity": "Critical",
+      "category": "compatibility",
+      "summary": "Hard-coded version allowlist disables plugin on 18/21 Paper versions incl. 26.3",
+      "files": [
+        "NovaRelics.java:27-65"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-003",
+      "severity": "Critical",
+      "category": "compatibility",
+      "summary": "Cannot load on Spigot: Adventure not bundled; Paper-only APIs used",
+      "files": [
+        "pom.xml",
+        "util/MiniMsg.java",
+        "ability/impl/ActionBarAbility.java:22",
+        "ability/impl/PhantomStrikeAbility.java:25",
+        "ability/impl/PreventDeathAbility.java:34"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-004",
+      "severity": "Critical",
+      "category": "security",
+      "summary": "Multi-block abilities change blocks without BlockBreakEvent (protection bypass, no durability)",
+      "files": [
+        "ability/impl/VeinMineAbility.java:28-34",
+        "ability/impl/TreeFellerAbility.java:26-32",
+        "ability/impl/WebTrapAbility.java",
+        "ability/impl/AutoReplantAbility.java"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "fixed",
+      "fixedIn": "phase1-critical-fixes"
+    },
+    {
+      "id": "NR-005",
+      "severity": "High",
+      "category": "exploit/economy",
+      "summary": "Full Repair does not cancel click when payment fails",
+      "files": [
+        "ability/impl/FullRepairAbility.java:26-50",
+        "trigger/impl/AnvilTrigger.java:44-61"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "fixed",
+      "fixedIn": "phase1-critical-fixes"
+    },
+    {
+      "id": "NR-006",
+      "severity": "High",
+      "category": "correctness",
+      "summary": "xp-cost 0 likely prevents anvil pickup in survival (bundled Mending Wool)",
+      "files": [
+        "ability/impl/FullRepairAbility.java:24",
+        "resources/relics/mending_wool.yml"
+      ],
+      "status": "needs-real-server",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-007",
+      "severity": "High",
+      "category": "data-loss",
+      "summary": "KEEP_ITEM re-adds item during death event; inventory cleared afterwards",
+      "files": [
+        "ability/impl/KeepItemAbility.java:12-24"
+      ],
+      "status": "needs-real-server",
+      "resolution": "fixed-pending-real-server-confirmation",
+      "fixedIn": "phase1-critical-fixes"
+    },
+    {
+      "id": "NR-008",
+      "severity": "High",
+      "category": "data-loss",
+      "summary": "RelicLoader.save drops aura/enchantments/flags/ids; editor and export overwrite source file",
+      "files": [
+        "relic/RelicLoader.java:152-190",
+        "command/sub/ExportSubCommand.java:40-42",
+        "relic/RelicManager.java:83-111"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "fixed",
+      "fixedIn": "phase1-critical-fixes"
+    },
+    {
+      "id": "NR-009",
+      "severity": "Medium",
+      "category": "correctness",
+      "summary": "Legacy '&' colour codes shown literally (confirmed on Paper); hex/gradients rely on Paper's serializer provider and are lost without it (Spigot / shaded Adventure)",
+      "files": [
+        "util/MiniMsg.java:15-18,46-48,63-65"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-010",
+      "severity": "High",
+      "category": "exploit",
+      "summary": "Cooldowns cleared on quit (relog bypass)",
+      "files": [
+        "trigger/impl/JoinQuitTrigger.java:31",
+        "cooldown/CooldownManager.java:106-108"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "fixed",
+      "fixedIn": "phase1-critical-fixes"
+    },
+    {
+      "id": "NR-011",
+      "severity": "High",
+      "category": "performance",
+      "summary": "Synchronous JDBC on main thread (DATABASE cooldowns, join load, give)",
+      "files": [
+        "cooldown/CooldownManager.java",
+        "storage/StorageManager.java",
+        "trigger/impl/JoinQuitTrigger.java:21"
+      ],
+      "status": "confirmed-static",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-012",
+      "severity": "High",
+      "category": "security",
+      "summary": "Path traversal in create/import/delete/save via relic id",
+      "files": [
+        "command/sub/CreateSubCommand.java:30",
+        "command/sub/ImportSubCommand.java:31",
+        "relic/RelicManager.java:70-81"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "fixed",
+      "fixedIn": "phase1-critical-fixes"
+    },
+    {
+      "id": "NR-013",
+      "severity": "Medium",
+      "category": "exploit",
+      "summary": "Random teleport lands on Nether roof; sync chunk loads",
+      "files": [
+        "ability/impl/TeleportAbility.java:51-69"
+      ],
+      "status": "confirmed-static",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-014",
+      "severity": "Medium",
+      "category": "exploit",
+      "summary": "Phantom Strike destination unchecked (wall phasing)",
+      "files": [
+        "ability/impl/PhantomStrikeAbility.java:13-23"
+      ],
+      "status": "confirmed-static",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-015",
+      "severity": "Medium",
+      "category": "compatibility",
+      "summary": "Skull texture reflection breaks on 1.20.5+; random UUID prevents stacking",
+      "files": [
+        "texture/SkullTextureUtil.java"
+      ],
+      "status": "needs-real-server",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-016",
+      "severity": "Medium",
+      "category": "compatibility",
+      "summary": "Renamed constants and string lookups depend on server bytecode rewriting / version \u2014 plugin cannot enable under MockBukkit (NoSuchFieldError PotionEffectType.CONFUSION); 6 missing symbols from 1.20.5, 8 from 1.21.3",
+      "files": [
+        "ability/impl/CureAbility.java",
+        "aura/impl/*",
+        "ability/impl/*Health*",
+        "relic/RelicLoader.java:79",
+        "util/ParticleUtil.java"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-017",
+      "severity": "Medium",
+      "category": "correctness",
+      "summary": "Armor EQUIP/UNEQUIP never fires (checks PLAYER instead of CRAFTING view)",
+      "files": [
+        "trigger/impl/EquipTrigger.java:48-70"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-018",
+      "severity": "Medium",
+      "category": "correctness",
+      "summary": "COMMAND trigger dispatches once per matching entry; prefix matching",
+      "files": [
+        "trigger/impl/CommandTrigger.java:28-40"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-019",
+      "severity": "Medium",
+      "category": "correctness",
+      "summary": "Cooldown Reduction no-op in MEMORY mode; ignores shared/global keys",
+      "files": [
+        "ability/impl/CooldownReductionAbility.java"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-020",
+      "severity": "Medium",
+      "category": "lifecycle",
+      "summary": "Temporary flight/glow/cobwebs not restored on disable/overlap",
+      "files": [
+        "ability/impl/FlightAbility.java",
+        "ability/impl/GlowAbility.java",
+        "ability/impl/WebTrapAbility.java"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-021",
+      "severity": "Medium",
+      "category": "incomplete-feature",
+      "summary": "Recipes, charges, allowed-items, rarity effects, many config keys and 4 hooks unused",
+      "files": [
+        "recipe/RecipeManager.java",
+        "relic/RelicLoader.java",
+        "hook/HookManager.java",
+        "resources/config.yml"
+      ],
+      "status": "confirmed-static",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-022",
+      "severity": "Medium",
+      "category": "correctness",
+      "summary": "/nr give loses overflow and allows unbounded amount; /nr take removes whole stack",
+      "files": [
+        "command/sub/GiveSubCommand.java:50-64",
+        "command/sub/TakeSubCommand.java:49-59"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-023",
+      "severity": "Medium",
+      "category": "dependency",
+      "summary": "13.7 MB jar: bundled sqlite natives and unrelocated slf4j",
+      "files": [
+        "pom.xml"
+      ],
+      "status": "confirmed-jar-listing",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-024",
+      "severity": "Medium",
+      "category": "reliability",
+      "summary": "Storage failure leaves null datasource; async save races; non-thread-safe PlayerData; no purge; SSL off",
+      "files": [
+        "storage/*"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-036",
+      "severity": "Medium",
+      "category": "correctness",
+      "summary": "Missing language keys are shown raw to players: getString(key,key) bypasses jar defaults and the English fallback",
+      "files": [
+        "config/ConfigManager.java:52-74,149-153"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "fixed",
+      "fixedIn": "phase1-critical-fixes"
+    },
+    {
+      "id": "NR-025",
+      "severity": "Low",
+      "category": "performance",
+      "summary": "Aura viewer check always true; update-ticks semantics; O(n^2)",
+      "files": [
+        "aura/AuraManager.java:86-113"
+      ],
+      "status": "confirmed-static",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-026",
+      "severity": "Low",
+      "category": "memory",
+      "summary": "Jump/Move trigger maps never cleared; client-controlled onGround",
+      "files": [
+        "trigger/impl/JumpTrigger.java",
+        "trigger/impl/MoveTrigger.java"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-027",
+      "severity": "Low",
+      "category": "ux",
+      "summary": "Cooldown message spam on passive triggers",
+      "files": [
+        "trigger/TriggerManager.java:70-73"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-028",
+      "severity": "Low",
+      "category": "correctness",
+      "summary": "Only 5 of 15 bundled relics copied on first run",
+      "files": [
+        "config/ConfigManager.java:112-124"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-029",
+      "severity": "Low",
+      "category": "correctness",
+      "summary": "Zero-vector normalize yields NaN velocity",
+      "files": [
+        "ability/impl/KnockbackAbility.java",
+        "ability/impl/PullAbility.java",
+        "ability/impl/ShockwaveAbility.java"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-030",
+      "severity": "Low",
+      "category": "security",
+      "summary": "Click trigger ignores denied interactions; HIGH-priority side effects",
+      "files": [
+        "trigger/impl/ClickTrigger.java",
+        "trigger/impl/BreakBlockTrigger.java"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-031",
+      "severity": "Low",
+      "category": "correctness",
+      "summary": "Steal Health heals when damage cancelled; Consume Relic always succeeds",
+      "files": [
+        "ability/impl/StealHealthAbility.java",
+        "ability/impl/ConsumeRelicAbility.java"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-032",
+      "severity": "Low",
+      "category": "correctness",
+      "summary": "Editor GUI does not cancel drag events",
+      "files": [
+        "gui/RelicEditorGui.java",
+        "gui/RelicListGui.java"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-033",
+      "severity": "Low",
+      "category": "correctness",
+      "summary": "Same relic in multiple armor slots dispatches multiple times",
+      "files": [
+        "trigger/TriggerManager.java:122-140"
+      ],
+      "status": "confirmed-executed",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-034",
+      "severity": "Low",
+      "category": "maintainability",
+      "summary": "Deprecated AsyncPlayerChatEvent on Paper",
+      "files": [
+        "gui/ChatInputManager.java"
+      ],
+      "status": "confirmed-static",
+      "resolution": "open"
+    },
+    {
+      "id": "NR-035",
+      "severity": "Low",
+      "category": "maintainability",
+      "summary": "ResultSets not explicitly closed",
+      "files": [
+        "storage/*Provider.java"
+      ],
+      "status": "confirmed-static",
+      "resolution": "open"
+    }
+  ],
+  "phase0": {
+    "date": "2026-11-12",
+    "tests": 191,
+    "behaviourPass": 117,
+    "regressionTests": 74,
+    "evidence": "docs/audit/test-results/"
+  },
+  "phase1": {
+    "date": "2026-11-12",
+    "tests": 218,
+    "gatePass": 170,
+    "regressionTestsOpen": 48,
+    "coverageLinePct": 61.7,
+    "coverageBranchPct": 41.4
+  }
+}

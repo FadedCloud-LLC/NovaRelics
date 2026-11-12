@@ -11,6 +11,7 @@ unknown-command: "<prefix> <red>Subcomando desconocido. Usa <yellow>/nr help</ye
 unknown-player: "<prefix> <red>El jugador <yellow><player></yellow> no fue encontrado."
 unknown-relic: "<prefix> <red>La reliquia <yellow><relic></yellow> no fue encontrada."
 invalid-amount: "<prefix> <red>Cantidad inválida. Por favor ingresa un número positivo."
+invalid-relic-id: "<prefix> <red>ID de reliquia inválido <yellow><id></yellow>. Permitido: <white><rule></white>."
 
 reload-success: "<prefix> <green>Configuración recargada exitosamente."
 

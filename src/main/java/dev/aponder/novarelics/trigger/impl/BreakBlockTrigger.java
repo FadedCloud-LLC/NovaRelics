@@ -20,7 +20,8 @@ public class BreakBlockTrigger implements Listener {
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
-        ItemStack item = player.getInventory().getItemInMainHand();
+        // Blocks broken by an ability (vein mine, tree feller) must not re-trigger relics.
+        if (dev.aponder.novarelics.util.BlockActions.isCascading(player)) return;
 
         // Check off-hand too for passive relics
         plugin.getTriggerManager().dispatchFromAllSlots(player, TriggerType.BREAK_BLOCK, event);

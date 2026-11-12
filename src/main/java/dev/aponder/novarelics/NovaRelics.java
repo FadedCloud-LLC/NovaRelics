@@ -22,7 +22,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Set;
 
-public final class NovaRelics extends JavaPlugin {
+// Not final: MockBukkit 4 loads plugins through a generated subclass (test-only requirement).
+public class NovaRelics extends JavaPlugin {
 
     private static final Set<String> SUPPORTED_VERSIONS = Set.of(
             "1.18.2", "1.19.4", "1.20.6", "1.21.11", "26.1.2"
@@ -43,6 +44,7 @@ public final class NovaRelics extends JavaPlugin {
     private GuiManager guiManager;
     private ChatInputManager chatInputManager;
     private RecipeManager recipeManager;
+    private dev.aponder.novarelics.relic.KeptItems keptItems;
 
     private boolean isVersionSupported() {
         String bukkit = Bukkit.getBukkitVersion();
@@ -91,6 +93,8 @@ public final class NovaRelics extends JavaPlugin {
         // 6. Triggers (registers event listeners)
         triggerManager = new TriggerManager(this);
         triggerManager.register();
+        keptItems = new dev.aponder.novarelics.relic.KeptItems(this);
+        getServer().getPluginManager().registerEvents(keptItems, this);
 
         // 7. Aura rendering
         auraManager = new AuraManager(this);
@@ -164,4 +168,5 @@ public final class NovaRelics extends JavaPlugin {
     public GuiManager getGuiManager() { return guiManager; }
     public ChatInputManager getChatInputManager() { return chatInputManager; }
     public RecipeManager getRecipeManager() { return recipeManager; }
+    public dev.aponder.novarelics.relic.KeptItems getKeptItems() { return keptItems; }
 }

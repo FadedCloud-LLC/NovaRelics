@@ -28,6 +28,6 @@ public class JoinQuitTrigger implements Listener {
         plugin.getTriggerManager().dispatchFromAllSlots(
                 event.getPlayer(), TriggerType.QUIT, event);
         plugin.getStorageManager().unloadPlayer(event.getPlayer().getUniqueId());
-        plugin.getCooldownManager().clearPlayer(event.getPlayer().getUniqueId());
+        plugin.getCooldownManager().pruneExpired(event.getPlayer().getUniqueId());
     }
 }

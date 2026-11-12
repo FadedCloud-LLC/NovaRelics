@@ -11,6 +11,7 @@ unknown-command: "<prefix> <red>Unknown subcommand. Use <yellow>/nr help</yellow
 unknown-player: "<prefix> <red>Player <yellow><player></yellow> was not found."
 unknown-relic: "<prefix> <red>Relic <yellow><relic></yellow> was not found."
 invalid-amount: "<prefix> <red>Invalid amount. Please provide a positive number."
+invalid-relic-id: "<prefix> <red>Invalid relic id <yellow><id></yellow>. Allowed: <white><rule></white>."
 
 reload-success: "<prefix> <green>Configuration reloaded successfully."
 

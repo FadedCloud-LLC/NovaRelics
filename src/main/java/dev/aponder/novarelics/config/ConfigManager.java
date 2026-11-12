@@ -16,6 +16,7 @@ public class ConfigManager {
     private FileConfiguration mainConfig;
     private FileConfiguration langConfig;
     private FileConfiguration raritiesConfig;
+    private FileConfiguration englishFallback;
 
     public ConfigManager(NovaRelics plugin) {
         this.plugin = plugin;
@@ -59,22 +60,32 @@ public class ConfigManager {
             cfg.setDefaults(jarDefaults);
         }
 
-        // If not English, also layer en.yml as a secondary fallback for untranslated keys
-        if (!lang.equals("en")) {
-            File enFile = new File(plugin.getDataFolder(), "language/en.yml");
-            if (enFile.exists()) {
-                YamlConfiguration enDefaults = YamlConfiguration.loadConfiguration(enFile);
-                // Only fill keys not already present
-                for (String key : enDefaults.getKeys(true)) {
-                    if (!cfg.contains(key)) {
-                        cfg.set(key, enDefaults.get(key));
-                    }
-                }
-            }
-        }
+        // English fallback for keys missing from both the active file and its jar defaults (NR-036)
+        englishFallback = loadEnglishFallback();
 
         plugin.getLogger().info("Language loaded: " + lang);
         return cfg;
+    }
+
+    private FileConfiguration loadEnglishFallback() {
+        File enFile = new File(plugin.getDataFolder(), "language/en.yml");
+        YamlConfiguration en = enFile.exists() ? YamlConfiguration.loadConfiguration(enFile) : new YamlConfiguration();
+        InputStream jarEn = plugin.getResource("language/en.yml");
+        if (jarEn != null) {
+            en.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(jarEn, StandardCharsets.UTF_8)));
+        }
+        return en;
+    }
+
+    /**
+     * Looks a message up in: active language file → that language's jar defaults →
+     * English file → English jar defaults. Returns null if no source has it.
+     * (getString(key, def) is not used on purpose: an explicit default bypasses setDefaults.)
+     */
+    private String lookup(String key) {
+        String msg = langConfig.getString(key);
+        if (msg == null && englishFallback != null) msg = englishFallback.getString(key);
+        return msg;
     }
 
     private void saveLanguageFile(String lang) {
@@ -147,9 +158,12 @@ public class ConfigManager {
     }
 
     public String getMessage(String key) {
-        String prefix = langConfig.getString("prefix",
-                "<gradient:#AA55FF:#55FFFF><bold>NovaRelics</bold></gradient> <dark_gray>»</dark_gray>");
-        String msg = langConfig.getString(key, key);
+        String prefix = lookup("prefix");
+        if (prefix == null) {
+            prefix = "<gradient:#AA55FF:#55FFFF><bold>NovaRelics</bold></gradient> <dark_gray>»</dark_gray>";
+        }
+        String msg = lookup(key);
+        if (msg == null) msg = key;
         return msg.replace("<prefix>", prefix);
     }
 

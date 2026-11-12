@@ -1,0 +1,69 @@
+name: Nightly compatibility
+
+on:
+  schedule:
+    - cron: '17 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  api-matrix:
+    name: Static API link check (all Spigot + Paper APIs 1.20 → 26.3)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - run: mvn -B -ntp package -DskipTests
+      - name: Check production bytecode against every API jar
+        continue-on-error: true   # open findings NR-003 / NR-016; see docs/audit/API_COMPATIBILITY_AUDIT.md
+        run: mvn -B -ntp -f testing/pom.xml test -Papi-matrix -Dtest=ApiCompatibilityTest -Djacoco.skip=true
+      - name: Summary
+        if: always()
+        run: |
+          echo "| API | Problems |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|---|---|" >> "$GITHUB_STEP_SUMMARY"
+          for f in $(ls testing/target/api-compat/*.txt | sort -V); do
+            echo "| $(basename "$f" .txt) | $(grep -m1 '^Problems:' "$f" | awk '{print $2}') |" >> "$GITHUB_STEP_SUMMARY"
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: api-compat-reports
+          path: testing/target/api-compat
+
+  full-suite:
+    name: Full MockBukkit suite ${{ matrix.profile }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { profile: mb-1.21, jdk: '21' }
+          - { profile: mb-26.3, jdk: '25' }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.jdk }}
+          cache: maven
+      - run: mvn -B -ntp package -DskipTests
+      - name: All tests incl. regression (results recorded, failures expected for open findings)
+        run: mvn -B -ntp -f testing/pom.xml verify -P${{ matrix.profile }} -Dmaven.test.failure.ignore=true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: full-suite-${{ matrix.profile }}
+          path: |
+            testing/target/surefire-reports
+            testing/target/site/jacoco
+
+  # Real Spigot/Paper server runs are intentionally not enabled yet: starting a server
+  # requires accepting the Minecraft EULA, which the project owner has not yet confirmed.
+  # See docs/audit/REAL_SERVER_TEST_RESULTS.md for the harness design.

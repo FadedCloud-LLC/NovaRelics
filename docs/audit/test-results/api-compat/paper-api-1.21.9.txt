@@ -1,0 +1,25 @@
+API surface: paper-api-1.21.9
+Referenced platform symbols: 1313
+Problems: 8
+
+CLASS/INTERFACE   org.bukkit.Sound#valueOf(Ljava/lang/String;)Lorg/bukkit/Sound; (compiled as class)
+        used in dev.aponder.novarelics.ability.impl.SoundAbility#execute
+        used in dev.aponder.novarelics.rarity.RarityDefinition#getBukkitSound
+MISSING FIELD     org.bukkit.Particle#CRIT_MAGIC
+        used in dev.aponder.novarelics.aura.impl.LightningAuraRenderer#render
+MISSING FIELD     org.bukkit.Particle#SPELL_WITCH
+        used in dev.aponder.novarelics.aura.impl.MagicAuraRenderer#render
+MISSING FIELD     org.bukkit.attribute.Attribute#GENERIC_MAX_HEALTH
+        used in dev.aponder.novarelics.ability.impl.GainHealthOnKillAbility#execute
+        used in dev.aponder.novarelics.ability.impl.HealAbility#execute
+        used in dev.aponder.novarelics.ability.impl.NearbyHealAbility#execute
+        used in dev.aponder.novarelics.ability.impl.PreventDeathAbility#execute
+        used in dev.aponder.novarelics.ability.impl.StealHealthAbility#execute
+MISSING FIELD     org.bukkit.potion.PotionEffectType#CONFUSION
+        used in dev.aponder.novarelics.ability.impl.CureAbility#buildNegativeSet
+MISSING FIELD     org.bukkit.potion.PotionEffectType#HARM
+        used in dev.aponder.novarelics.ability.impl.CureAbility#buildNegativeSet
+MISSING FIELD     org.bukkit.potion.PotionEffectType#SLOW
+        used in dev.aponder.novarelics.ability.impl.CureAbility#buildNegativeSet
+MISSING FIELD     org.bukkit.potion.PotionEffectType#SLOW_DIGGING
+        used in dev.aponder.novarelics.ability.impl.CureAbility#buildNegativeSet

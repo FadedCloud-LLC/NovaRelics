@@ -38,17 +38,23 @@ public class FullRepairAbility extends Ability {
     @Override
     public boolean execute(AbilityConfig config, AbilityContext context) {
         // Money cost check via Vault
+        // NR-005: payment happens first; any failure cancels the anvil click so the
+        // repaired result cannot be taken for free.
         double moneyCost = config.getDouble("money-cost", 0.0);
-        if (moneyCost > 0 && plugin.getHookManager().getVaultHook().isEnabled()) {
-            double balance = plugin.getHookManager().getVaultHook()
-                    .getBalance(context.getPlayer());
-            if (balance < moneyCost) {
+        if (moneyCost > 0) {
+            var vault = plugin.getHookManager().getVaultHook();
+            if (!vault.isEnabled()) {
+                plugin.getLogger().warning("FULL_REPAIR on relic " + context.getRelic().getId()
+                        + " has money-cost " + moneyCost + " but no Vault economy is available; denying.");
+                return deny(context);
+            }
+            if (vault.getBalance(context.getPlayer()) < moneyCost
+                    || !vault.withdraw(context.getPlayer(), moneyCost)) {
                 String msg = plugin.getConfigManager().getMessage("ability-full-repair-no-money",
                         "<cost>", String.valueOf(moneyCost));
                 MiniMsg.send(context.getPlayer(), MiniMsg.parse(msg));
-                return false;
+                return deny(context);
             }
-            plugin.getHookManager().getVaultHook().withdraw(context.getPlayer(), moneyCost);
         }
 
         // Success message
@@ -60,6 +66,11 @@ public class FullRepairAbility extends Ability {
                 "<item>", itemName);
         MiniMsg.send(context.getPlayer(), MiniMsg.parse(msg));
         return true;
+    }
+
+    private static boolean deny(AbilityContext context) {
+        if (context.getOriginalEvent() instanceof org.bukkit.event.Cancellable click) click.setCancelled(true);
+        return false;
     }
 
     @Override

@@ -6,6 +6,7 @@ import dev.aponder.novarelics.relic.RelicDefinition;
 import dev.aponder.novarelics.util.MiniMsg;
 import org.bukkit.command.CommandSender;
 
+import dev.aponder.novarelics.relic.RelicIds;
 import java.util.Collections;
 import java.util.List;
 
@@ -28,6 +29,11 @@ public class CreateSubCommand implements SubCommand {
         }
 
         String id = args[0].toLowerCase().replace(" ", "_");
+        if (!RelicIds.isValid(id)) {
+            MiniMsg.send(sender, MiniMsg.parse(plugin.getConfigManager().getMessage("invalid-relic-id",
+                    "<id>", id, "<rule>", RelicIds.RULE)));
+            return true;
+        }
         if (plugin.getRelicManager().getRelic(id) != null) {
             MiniMsg.send(sender, MiniMsg.parse(
                     "<red>A relic with id <yellow>" + id + "</yellow> already exists."));

@@ -11,6 +11,7 @@ unknown-command: "<prefix> <red>Неизвестная подкоманда. И�
 unknown-player: "<prefix> <red>Игрок <yellow><player></yellow> не найден."
 unknown-relic: "<prefix> <red>Реликвия <yellow><relic></yellow> не найдена."
 invalid-amount: "<prefix> <red>Неверное количество. Введите положительное число."
+invalid-relic-id: "<prefix> <red>Недопустимый ID реликвии <yellow><id></yellow>. Разрешено: <white><rule></white>."
 
 reload-success: "<prefix> <green>Конфигурация успешно перезагружена."
 

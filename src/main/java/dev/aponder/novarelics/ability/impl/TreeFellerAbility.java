@@ -4,6 +4,7 @@ import dev.aponder.novarelics.NovaRelics;
 import dev.aponder.novarelics.ability.Ability;
 import dev.aponder.novarelics.ability.AbilityConfig;
 import dev.aponder.novarelics.ability.AbilityContext;
+import dev.aponder.novarelics.util.BlockActions;
 import dev.aponder.novarelics.util.MiniMsg;
 import org.bukkit.Material;
 import org.bukkit.Tag;
@@ -36,16 +37,9 @@ public class TreeFellerAbility extends Ability {
                         .getInt("performance.max-tree-feller-blocks", 128));
 
         List<Block> tree = findTree(origin, maxBlocks);
-        ItemStack tool = player.getInventory().getItemInMainHand();
-
-        int felled = 0;
-        for (Block block : tree) {
-            if (block.equals(origin)) continue;
-            block.getDrops(tool).forEach(drop ->
-                    block.getWorld().dropItemNaturally(block.getLocation(), drop));
-            block.setType(Material.AIR);
-            felled++;
-        }
+        tree.remove(origin);
+        // NR-004: protection-aware, durability-consuming breaks with vanilla drops.
+        int felled = BlockActions.breakAsPlayer(player, tree);
 
         if (felled > 0) {
             String msg = plugin.getConfigManager().getMessage("ability-tree-feller",
