@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  NovaRelics test project (MockBukkit + JUnit).
+
+  Why a separate project?
+  The plugin is compiled against paper-api 1.18.2 (see ../pom.xml), but MockBukkit
+  needs a modern paper-api on the classpath. Maven cannot hold two versions of the same
+  artifact in one module, so the tests live here and run against the *unchanged*
+  production bytecode in ../target/classes (used as this project's output directory).
+
+  Usage (from the repository root):
+    mvn -B package -DskipTests                     # build the plugin first
+    mvn -B -f testing/pom.xml verify               # MockBukkit 1.21 (JDK 21)  [default]
+    mvn -B -f testing/pom.xml verify -Pmb-26.3     # MockBukkit 26.3 (JDK 25)
+
+  Results:  testing/target/surefire-reports (JUnit XML)
+            testing/target/site/jacoco      (coverage of the production classes)
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>dev.aponder</groupId>
+    <artifactId>NovaRelics-tests</artifactId>
+    <version>1.0.1</version>
+    <packaging>jar</packaging>
+    <name>NovaRelics tests (MockBukkit)</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.release>21</maven.compiler.release>
+
+        <!-- Overridden per profile -->
+        <mockbukkit.artifact>mockbukkit-v1.21</mockbukkit.artifact>
+        <mockbukkit.version>4.116.3</mockbukkit.version>
+        <paper.test.version>1.21.11-R0.1-SNAPSHOT</paper.test.version>
+        <test.api.generation>1.21</test.api.generation>
+
+        <junit.version>6.0.3</junit.version>
+        <mockito.version>5.24.0</mockito.version>
+        <archunit.version>1.5.1</archunit.version>
+        <jacoco.version>0.8.16</jacoco.version>
+        <surefire.version>3.6.1</surefire.version>
+
+        <!-- Coverage gate is reported but not enforced until Phase 1 (see docs/audit). -->
+        <jacoco.haltOnFailure>false</jacoco.haltOnFailure>
+        <!-- Populated by jacoco:prepare-agent; empty default keeps -Djacoco.skip working -->
+        <argLine></argLine>
+
+        <!-- Spigot API jar of the same generation, used by ApiCompatibilityTest -->
+        <spigot.test.version>1.21.11-R0.1-SNAPSHOT</spigot.test.version>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>papermc</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
+        </repository>
+        <repository>
+            <id>spigotmc</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+        <repository>
+            <id>jitpack</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- Server API used by MockBukkit for this generation -->
+        <dependency>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>${paper.test.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockbukkit.mockbukkit</groupId>
+            <artifactId>${mockbukkit.artifact}</artifactId>
+            <version>${mockbukkit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Runtime dependencies of the plugin (mirrors ../pom.xml) -->
+        <dependency>
+            <groupId>org.bstats</groupId>
+            <artifactId>bstats-bukkit</artifactId>
+            <version>3.2.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>5.0.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.43.0.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.24.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.MilkBowl</groupId>
+            <artifactId>VaultAPI</artifactId>
+            <version>1.7.1</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.bukkit</groupId>
+                    <artifactId>bukkit</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>net.luckperms</groupId>
+            <artifactId>api</artifactId>
+            <version>5.4</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Test frameworks -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <!-- Registers the legacy-rename agent before any test runs (support/LegacyRenameSessionListener) -->
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <!-- Bytecode scanning (API compatibility checker) and the legacy-rename agent -->
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm-tree</artifactId>
+            <version>9.11.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.tngtech.archunit</groupId>
+            <artifactId>archunit</artifactId>
+            <version>${archunit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <!-- Use the production classes as-is. No main sources live in this project. -->
+        <outputDirectory>${project.basedir}/../target/classes</outputDirectory>
+
+        <plugins>
+            <plugin>
+                <!-- Never let `mvn clean` here delete the production classes. -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.4.1</version>
+                <configuration>
+                    <excludeDefaultDirectories>true</excludeDefaultDirectories>
+                    <filesets>
+                        <fileset><directory>${project.build.directory}</directory></fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.14.1</version>
+            </plugin>
+            <plugin>
+                <!-- Nothing to package: this project only runs tests. -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.2</version>
+                <configuration><skipIfEmpty>true</skipIfEmpty></configuration>
+                <executions>
+                    <execution>
+                        <id>default-jar</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <!-- API jars for the static compatibility check (ApiCompatibilityTest).
+                     Default: Spigot+Paper floor (1.20.1) and the Spigot API of this generation.
+                     -Papi-matrix: every stable Spigot and Paper API in the supported range. -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.9.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-api-jars</id>
+                        <phase>generate-test-resources</phase>
+                        <goals><goal>copy</goal></goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/api-jars</outputDirectory>
+                            <artifactItems>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>1.20.1-R0.1-SNAPSHOT</version><destFileName>spigot-api-1.20.1.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>1.20.1-R0.1-SNAPSHOT</version><destFileName>paper-api-1.20.1.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>${spigot.test.version}</version><destFileName>spigot-api-${test.api.generation}.jar</destFileName></artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals><goal>prepare-agent</goal></goals>
+                        <configuration>
+                            <includes><include>dev/aponder/novarelics/**</include></includes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>verify</phase>
+                        <goals><goal>report</goal></goals>
+                        <configuration>
+                            <includes><include>dev/aponder/novarelics/**</include></includes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>check</id>
+                        <phase>verify</phase>
+                        <goals><goal>check</goal></goals>
+                        <configuration>
+                            <haltOnFailure>${jacoco.haltOnFailure}</haltOnFailure>
+                            <includes><include>dev/aponder/novarelics/**</include></includes>
+                            <rules>
+                                <rule>
+                                    <element>BUNDLE</element>
+                                    <limits>
+                                        <limit><counter>LINE</counter><value>COVEREDRATIO</value><minimum>0.90</minimum></limit>
+                                        <limit><counter>BRANCH</counter><value>COVEREDRATIO</value><minimum>0.85</minimum></limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire.version}</version>
+                <configuration>
+                    <!-- Failing regression tests are expected until each finding is fixed.
+                         They are reported, never skipped; use -Dmaven.test.failure.ignore=true
+                         locally to still get the coverage report. -->
+                    <systemPropertyVariables>
+                        <test.api.generation>${test.api.generation}</test.api.generation>
+                        <!-- Tests use the un-shaded classes; bStats would otherwise refuse to start. -->
+                        <bstats.relocatecheck>false</bstats.relocatecheck>
+                    </systemPropertyVariables>
+                    <!-- Dynamic agent loading: Mockito and LegacyRenameAgent self-attach -->
+                    <argLine>@{argLine} -XX:+EnableDynamicAgentLoading</argLine>
+                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
+                    <trimStackTrace>false</trimStackTrace>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>mb-1.21</id>
+            <activation><activeByDefault>true</activeByDefault></activation>
+        </profile>
+        <profile>
+            <id>mb-26.3</id>
+            <properties>
+                <maven.compiler.release>25</maven.compiler.release>
+                <mockbukkit.artifact>mockbukkit-v26.3</mockbukkit.artifact>
+                <mockbukkit.version>4.120.0</mockbukkit.version>
+                <paper.test.version>26.3.build.200-stable</paper.test.version>
+                <test.api.generation>26.3</test.api.generation>
+                <spigot.test.version>26.3-R0.1-SNAPSHOT</spigot.test.version>
+            </properties>
+        </profile>
+        <profile>
+            <id>api-matrix</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>copy-api-matrix</id>
+                                <phase>generate-test-resources</phase>
+                                <goals><goal>copy</goal></goals>
+                                <configuration>
+                                    <outputDirectory>${project.build.directory}/api-jars</outputDirectory>
+                                    <artifactItems>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>1.20-R0.1-SNAPSHOT</version><destFileName>spigot-api-1.20.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>1.20.1-R0.1-SNAPSHOT</version><destFileName>spigot-api-1.20.1.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>1.20.2-R0.1-SNAPSHOT</version><destFileName>spigot-api-1.20.2.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>1.20.3-R0.1-SNAPSHOT</version><destFileName>spigot-api-1.20.3.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>1.20.4-R0.1-SNAPSHOT</version><destFileName>spigot-api-1.20.4.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>1.20.5-R0.1-SNAPSHOT</version><destFileName>spigot-api-1.20.5.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>1.20.6-R0.1-SNAPSHOT</version><destFileName>spigot-api-1.20.6.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>1.21-R0.1-SNAPSHOT</version><destFileName>spigot-api-1.21.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>1.21.1-R0.1-SNAPSHOT</version><destFileName>spigot-api-1.21.1.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>1.21.2-R0.1-SNAPSHOT</version><destFileName>spigot-api-1.21.2.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>1.21.3-R0.1-SNAPSHOT</version><destFileName>spigot-api-1.21.3.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>1.21.4-R0.1-SNAPSHOT</version><destFileName>spigot-api-1.21.4.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>1.21.5-R0.1-SNAPSHOT</version><destFileName>spigot-api-1.21.5.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>1.21.6-R0.1-SNAPSHOT</version><destFileName>spigot-api-1.21.6.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>1.21.7-R0.1-SNAPSHOT</version><destFileName>spigot-api-1.21.7.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>1.21.8-R0.1-SNAPSHOT</version><destFileName>spigot-api-1.21.8.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>1.21.9-R0.1-SNAPSHOT</version><destFileName>spigot-api-1.21.9.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>1.21.10-R0.1-SNAPSHOT</version><destFileName>spigot-api-1.21.10.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>1.21.11-R0.1-SNAPSHOT</version><destFileName>spigot-api-1.21.11.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>26.1-R0.1-SNAPSHOT</version><destFileName>spigot-api-26.1.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>26.1.1-R0.1-SNAPSHOT</version><destFileName>spigot-api-26.1.1.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>26.1.2-R0.1-SNAPSHOT</version><destFileName>spigot-api-26.1.2.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>26.2-R0.1-SNAPSHOT</version><destFileName>spigot-api-26.2.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>org.spigotmc</groupId><artifactId>spigot-api</artifactId><version>26.3-R0.1-SNAPSHOT</version><destFileName>spigot-api-26.3.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>1.20-R0.1-SNAPSHOT</version><destFileName>paper-api-1.20.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>1.20.1-R0.1-SNAPSHOT</version><destFileName>paper-api-1.20.1.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>1.20.2-R0.1-SNAPSHOT</version><destFileName>paper-api-1.20.2.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>1.20.4-R0.1-SNAPSHOT</version><destFileName>paper-api-1.20.4.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>1.20.5-R0.1-SNAPSHOT</version><destFileName>paper-api-1.20.5.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>1.20.6-R0.1-SNAPSHOT</version><destFileName>paper-api-1.20.6.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>1.21-R0.1-SNAPSHOT</version><destFileName>paper-api-1.21.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>1.21.1-R0.1-SNAPSHOT</version><destFileName>paper-api-1.21.1.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>1.21.3-R0.1-SNAPSHOT</version><destFileName>paper-api-1.21.3.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>1.21.4-R0.1-SNAPSHOT</version><destFileName>paper-api-1.21.4.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>1.21.5-R0.1-SNAPSHOT</version><destFileName>paper-api-1.21.5.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>1.21.6-R0.1-SNAPSHOT</version><destFileName>paper-api-1.21.6.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>1.21.7-R0.1-SNAPSHOT</version><destFileName>paper-api-1.21.7.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>1.21.8-R0.1-SNAPSHOT</version><destFileName>paper-api-1.21.8.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>1.21.9-R0.1-SNAPSHOT</version><destFileName>paper-api-1.21.9.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>1.21.10-R0.1-SNAPSHOT</version><destFileName>paper-api-1.21.10.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>1.21.11-R0.1-SNAPSHOT</version><destFileName>paper-api-1.21.11.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>26.1.2.build.74-stable</version><destFileName>paper-api-26.1.2.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>26.2.build.135-stable</version><destFileName>paper-api-26.2.jar</destFileName></artifactItem>
+                                <artifactItem><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>26.3.build.249-stable</version><destFileName>paper-api-26.3.jar</destFileName></artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

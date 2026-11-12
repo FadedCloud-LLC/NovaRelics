@@ -1,0 +1,29 @@
+API surface: spigot-api-1.20.4
+Referenced platform symbols: 1313
+Problems: 9
+
+MISSING CLASS     net.kyori.adventure.text.Component
+        used in dev.aponder.novarelics.util.MiniMsg#parse
+MISSING CLASS     net.kyori.adventure.text.format.TextColor
+        used in dev.aponder.novarelics.util.ColorUtil#fromHex
+        used in dev.aponder.novarelics.util.ColorUtil#interpolate
+MISSING CLASS     net.kyori.adventure.text.minimessage.MiniMessage
+        used in dev.aponder.novarelics.util.MiniMsg#<clinit>
+        used in dev.aponder.novarelics.util.MiniMsg#parse
+        used in dev.aponder.novarelics.util.MiniMsg#serialize
+        used in dev.aponder.novarelics.util.MiniMsg#strip
+MISSING CLASS     net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer
+        used in dev.aponder.novarelics.util.MiniMsg#<clinit>
+        used in dev.aponder.novarelics.util.MiniMsg#parse
+        used in dev.aponder.novarelics.util.MiniMsg#send
+        used in dev.aponder.novarelics.util.MiniMsg#toLegacy
+MISSING METHOD    org.bukkit.command.ConsoleCommandSender#sendMessage(Lnet/kyori/adventure/text/Component;)V
+        used in dev.aponder.novarelics.NovaRelics#console
+MISSING METHOD    org.bukkit.entity.Player#getTargetEntity(IZ)Lorg/bukkit/entity/Entity;
+        used in dev.aponder.novarelics.ability.impl.PhantomStrikeAbility#execute
+MISSING METHOD    org.bukkit.entity.Player#sendActionBar(Ljava/lang/String;)V
+        used in dev.aponder.novarelics.ability.impl.ActionBarAbility#execute
+MISSING METHOD    org.bukkit.entity.Player#sendMessage(Lnet/kyori/adventure/text/Component;)V
+        used in dev.aponder.novarelics.ability.impl.BroadcastAbility#execute
+MISSING METHOD    org.bukkit.event.entity.PlayerDeathEvent#setCancelled(Z)V
+        used in dev.aponder.novarelics.ability.impl.PreventDeathAbility#execute

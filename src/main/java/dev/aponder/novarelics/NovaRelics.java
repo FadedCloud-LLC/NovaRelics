@@ -22,7 +22,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Set;
 
-public final class NovaRelics extends JavaPlugin {
+// Not final: MockBukkit 4 loads plugins through a generated subclass (test-only requirement).
+public class NovaRelics extends JavaPlugin {
 
     private static final Set<String> SUPPORTED_VERSIONS = Set.of(
             "1.18.2", "1.19.4", "1.20.6", "1.21.11", "26.1.2"
